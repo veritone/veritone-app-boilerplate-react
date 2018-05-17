@@ -22,7 +22,7 @@ module.exports = {
     [
       '@neutrinojs/react',
       {
-        html: { title: 'Face Match', window: { config: safeConfig } },
+        html: { title: 'App Foundation', window: { config: safeConfig } },
         devServer: {
           public: 'local.facematch.com',
           // open: true, // open browser window when server starts
