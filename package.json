@@ -18,6 +18,10 @@
     "@neutrinojs/jest": "^8.2.3",
     "@neutrinojs/react": "^8.2.3",
     "babel-eslint": "^8.2.3",
+    "babel-plugin-date-fns": "^0.1.0",
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-universal-import": "^2.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.19.1",
@@ -28,10 +32,15 @@
     "eslint-plugin-react": "^7.8.2",
     "husky": "^1.0.0-rc.6",
     "neutrino": "^8.2.3",
+    "neutrino-middleware-styles-loader": "^0.1.1",
+    "node-sass": "^4.9.0",
     "prettier": "^1.12.1",
+    "sass-loader": "^7.0.1",
     "stylelint": "^8.3.0",
     "stylelint-config-standard": "^17.0.0",
-    "veritone-dev-env": "^2.0.0"
+    "veritone-dev-env": "^2.0.0",
+    "webpack": "^4.8.3",
+    "webpack-dev-server": "^3.1.4"
   },
   "husky": {
     "hooks": {
@@ -40,9 +49,23 @@
   },
   "license": "MIT",
   "dependencies": {
+    "babel-merge": "^1.1.1",
+    "date-fns": "^1.29.0",
     "prop-types": "^15.6.1",
+    "query-string": "^6.1.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-hot-loader": "^4.2.0"
+    "react-hot-loader": "^4.2.0",
+    "react-redux": "^5.0.7",
+    "react-universal-component": "^2.9.0",
+    "redux": "^4.0.0",
+    "redux-api-middleware-fixed": "^2.0.0",
+    "redux-first-router": "^0.0.9-rudy",
+    "redux-form": "^7.3.0",
+    "redux-saga": "^0.16.0",
+    "redux-thunk": "^2.2.0",
+    "veritone-react-common": "^4.4.0",
+    "veritone-redux-common": "^3.2.0",
+    "veritone-widgets": "^4.2.0"
   }
 }

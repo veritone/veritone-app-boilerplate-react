@@ -1,20 +1,29 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import App from './App';
 
-const root = document.getElementById('root');
-const load = () =>
+import 'resources/styles/global.scss';
+
+import App from 'pages/App';
+
+import { Provider } from 'react-redux';
+import { store } from './state/configureStore';
+
+const load = App =>
   render(
     <AppContainer>
-      <App />
+      <Provider store={store}>
+        <App/>
+      </Provider>
     </AppContainer>,
-    root
+    document.getElementById('root')
   );
 
-// This is needed for Hot Module Replacement
 if (module.hot) {
-  module.hot.accept('./App', load);
+  module.hot.accept('pages/App', () => {
+    // const PageComponent = require('pages/App').default;
+    return load(App);
+  });
 }
 
-load();
+load(App);
