@@ -1,0 +1,10 @@
+{
+  "name": "app-base",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Mitch Robb <mrobb@veritone.com>",
+  "private": true,
+  "devDependencies": {
+    "veritone-dev-env": "^2.0.0"
+  }
+}
