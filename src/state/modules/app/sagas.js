@@ -8,7 +8,6 @@ import {
   take,
   select
 } from 'redux-saga/effects';
-import { noop } from 'lodash';
 import { redirect } from 'redux-first-router';
 import { modules } from 'veritone-redux-common';
 const {
