@@ -3,17 +3,15 @@ import { apiMiddleware } from 'redux-api-middleware';
 import createSagaMiddleware from 'redux-saga';
 import queryString from 'query-string';
 import thunk from 'redux-thunk';
-import { modules } from 'veritone-redux-common';
 
 // imports for router
 import { connectRoutes } from 'redux-first-router';
 import routesMap from '../routesMap';
 
 // redux sagas, reducers, actions
-const { user: { fetchUser, fetchEnabledApps, fetchingFailed } } = modules;
-const { config: { getConfig } } = modules;
 import sagas from './sagas';
 import composeReducers from './rootReducer';
+import { boot } from 'modules/app';
 
 const {
   reducer: routerReducer,
@@ -39,24 +37,6 @@ export const store = createStore(
   composeEnhancers(routerEnhancer, composeMiddlewares)
 );
 
-store
-  .dispatch(fetchUser())
-  .then(() => {
-    // fixme -- implement in terms of oauth
-    const state = store.getState();
+sagaMiddleware.run(sagas);
 
-    if (fetchingFailed(state)) {
-      const config = getConfig(state);
-      const loginRoot = config.pageUris.loginPageUri;
-      window.location = `${loginRoot}?redirect=${window.location.href}`;
-      throw new Error('redirecting to login');
-    }
-
-    return true;
-  })
-  .then(initialDispatch)
-  .then(() => sagaMiddleware.run(sagas))
-
-  // fixme -- more structure for base setup?
-  // ie. store.dispatch(setUpUser)
-  .then(() => store.dispatch(fetchEnabledApps()));
+store.dispatch(boot({ onSuccess: initialDispatch }));

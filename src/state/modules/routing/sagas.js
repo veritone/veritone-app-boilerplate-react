@@ -8,6 +8,10 @@ import {
   fork
 } from 'redux-saga/effects';
 import { redirect } from 'redux-first-router';
+import { modules } from 'veritone-redux-common';
+const {
+  user: { userIsAuthenticated }
+} = modules;
 
 import {
   selectRoutesMap,
@@ -43,7 +47,9 @@ function* redirectOnApiAuthErrors() {
     ({ payload: { name, status } = {} } = {}) =>
       name === 'ApiError' && forbiddenStatusCodes.includes(status),
     function*() {
-      yield put(redirect({ type: ROUTE_FORBIDDEN }));
+      if (yield select(userIsAuthenticated)) { // ignore if user is not logged in
+        yield put(redirect({ type: ROUTE_FORBIDDEN }));
+      }
     }
   );
 }

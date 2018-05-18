@@ -1,9 +1,7 @@
 import React from 'react';
 // import {  } from 'prop-types';
-import { AppFooter, AppContainer } from 'veritone-react-common';
+import { AppFooter, AppContainer, AppBar } from 'veritone-react-common';
 import styles from './styles.scss';
-
-import { AppBar } from 'veritone-react-common';
 
 export default class Home extends React.Component {
   static propTypes = {};
@@ -11,8 +9,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div style={{ height: '100%', backgroundColor: '#2196F3' }}>
-        <AppBar elevation={0} logo={false} />
-
+        <AppBar />
         <AppContainer appBarOffset appFooterOffset="tall">
           <div className={styles.content}>this is the home page content</div>
         </AppContainer>

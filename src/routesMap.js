@@ -1,12 +1,14 @@
 import { NOT_FOUND } from 'redux-first-router';
-import {
-  ROUTE_HOME,
-  ROUTE_FORBIDDEN
-} from 'modules/routing';
+import { ROUTE_AUTH, ROUTE_HOME, ROUTE_FORBIDDEN } from 'modules/routing';
 
-// todo: add example using saga key, see dora modules/search/saga
+import { loadAuthPage } from 'modules/auth/saga';
 
 export default {
+  [ROUTE_AUTH]: {
+    path: '/login',
+    component: 'Auth',
+    saga: loadAuthPage
+  },
   [ROUTE_HOME]: {
     path: '/',
     component: 'Home'

@@ -1,15 +1,12 @@
 import React from 'react';
+import { hot } from 'react-hot-loader';
 import RootRoute from '../../RootRoute';
+// todo: add global stuff -- snackbar/modal targets, intercom button, ...
 
-export default class AppContainer extends React.Component {
-  static propTypes = {};
+const App = () => (
+  <div style={{ height: '100%' }}>
+    <RootRoute />
+  </div>
+);
 
-  render() {
-    // todo: add global stuff -- snackbar/modal targets, intercom button, ...
-    return (
-      <div style={{ height: '100%' }}>
-        <RootRoute />
-      </div>
-    );
-  }
-}
+export default hot(module)(App);

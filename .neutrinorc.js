@@ -9,8 +9,7 @@ const extraBabelPlugins = [
   'babel-plugin-transform-decorators-legacy',
   'babel-plugin-lodash',
   'babel-plugin-date-fns',
-  'babel-plugin-universal-import',
-  'react-hot-loader/babel'
+  'babel-plugin-universal-import'
 ].map(require.resolve);
 
 const safeConfig = pick(devConfig, safeConfigKeys);
@@ -26,7 +25,7 @@ module.exports = {
         devServer: {
           public: 'local.facematch.com',
           // open: true, // open browser window when server starts
-          port: 3000,
+          port: 3001,
           publicPath: '/'
         }
       }
@@ -62,7 +61,7 @@ module.exports = {
               plugins: extraBabelPlugins,
               env: {
                 development: {
-                  plugins: extraBabelPlugins
+                  plugins: [...extraBabelPlugins, 'react-hot-loader/babel']
                 }
               }
             },
