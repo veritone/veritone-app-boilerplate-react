@@ -39,7 +39,8 @@ export default function configureStore() {
   );
 
   sagaMiddleware.run(sagas);
-  store.dispatch(boot({ onSuccess: initialDispatch }));
+  initialDispatch();
+  store.dispatch(boot());
 
   return store;
 }

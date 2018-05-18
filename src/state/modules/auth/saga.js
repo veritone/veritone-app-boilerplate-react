@@ -30,7 +30,6 @@ function* redirectToForbiddenRouteOnApiAuthErrors() {
 function* redirectAwayFromAuthPageIfAlreadyAuthenticated() {
   yield takeLatest(ROUTE_AUTH, function*() {
     if (yield select(userIsAuthenticated)) {
-      console.log('already logged in; redirecting');
       yield put(redirect({ type: ROUTE_HOME }));
     }
   });
@@ -41,7 +40,6 @@ function* redirectAwayFromAuthPageAfterUserLogin() {
     const routeType = yield select(selectRouteType);
 
     if (routeType === ROUTE_AUTH) {
-      console.log('user logged in; redirecting');
       yield put(redirect({ type: ROUTE_HOME }));
     }
   });

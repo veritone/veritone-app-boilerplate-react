@@ -27,7 +27,7 @@ function* getAppStartupDependencies() {
 }
 
 function* watchAppBoot() {
-  yield takeLatest(BOOT, function*({ payload: { onSuccess = noop } }) {
+  yield takeLatest(BOOT, function*() {
     const user = yield* fetchUserWithStoredToken();
 
     if (user) {
@@ -40,7 +40,6 @@ function* watchAppBoot() {
       }
     }
 
-    yield call(onSuccess);
     yield put(bootFinished);
   });
 }

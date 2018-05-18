@@ -7,18 +7,22 @@ export default {
   [ROUTE_AUTH]: {
     path: '/login',
     component: 'Auth',
-    saga: loadAuthPage
+    saga: loadAuthPage,
+    requiresAuth: false
   },
   [ROUTE_HOME]: {
     path: '/',
-    component: 'Home'
+    component: 'Home',
+    requiresAuth: true
   },
   [NOT_FOUND]: {
     path: '/not-found',
-    component: 'NotFound'
+    component: 'NotFound',
+    requiresAuth: true
   },
   [ROUTE_FORBIDDEN]: {
     path: '/forbidden',
-    component: 'Forbidden'
+    component: 'Forbidden',
+    requiresAuth: true
   }
 };
