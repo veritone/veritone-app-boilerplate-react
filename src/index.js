@@ -10,19 +10,13 @@ import App from 'pages/App';
 import { handleImplicitRedirect } from 'veritone-oauth-helpers';
 
 function bootstrap() {
-  if (
-    process.env.NODE_ENV === 'development' &&
-    (window.name === '_auth')
-  ) {
+  if (process.env.NODE_ENV === 'development' && window.name === '_auth') {
     // if this is an OAuth redirect window, deal with the OAuth response but
     // don't render the app.
-    return handleImplicitRedirect(
-      window.location.hash,
-      window.opener
-    );
+    return handleImplicitRedirect(window.location.hash, window.opener);
   }
 
-  const store= configureStore();
+  const store = configureStore();
 
   render(
     <Provider store={store}>
