@@ -1,21 +1,18 @@
 import React from 'react';
 // import {  } from 'prop-types';
-import { AppFooter, AppContainer, AppBar } from 'veritone-react-common';
+import { AppFooter, AppContainer } from 'veritone-react-common';
+import { AppBar } from 'veritone-widgets';
 import styles from './styles.scss';
-import Link from 'redux-first-router-link'
 
 export default class Home extends React.Component {
   static propTypes = {};
 
   render() {
     return (
-      <div style={{ height: '100%', backgroundColor: '#2196F3' }}>
-        <AppBar />
+      <div style={{ height: '100%', backgroundColor: '#FBFBFB' }}>
+        <AppBar appSwitcher profileMenu backgroundColor="#2b485c" />
         <AppContainer appBarOffset appFooterOffset="short">
-          <div className={styles.content}>
-            home content
-            <Link to='/asdf'>test</Link>
-          </div>
+          <div className={styles.content}>home content</div>
         </AppContainer>
         <AppFooter short>
           <span>© 2017 Veritone, Inc. All Rights Reserved.</span>

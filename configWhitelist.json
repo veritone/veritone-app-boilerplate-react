@@ -1,3 +1,5 @@
 [
-  "apiRoot"
+  "apiRoot",
+  "switchAppRoute",
+  "graphQLEndpoint"
 ]
