@@ -32,11 +32,14 @@ const composeMiddlewares = applyMiddleware(
   thunk
 );
 
-export const store = createStore(
-  composeReducers({ location: routerReducer }),
-  composeEnhancers(routerEnhancer, composeMiddlewares)
-);
+export default function configureStore() {
+  const store = createStore(
+    composeReducers({ location: routerReducer }),
+    composeEnhancers(routerEnhancer, composeMiddlewares)
+  );
 
-sagaMiddleware.run(sagas);
+  sagaMiddleware.run(sagas);
+  store.dispatch(boot({ onSuccess: initialDispatch }));
 
-store.dispatch(boot({ onSuccess: initialDispatch }));
+  return store;
+}

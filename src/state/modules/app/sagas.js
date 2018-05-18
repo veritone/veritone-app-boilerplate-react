@@ -5,7 +5,8 @@ import {
   put,
   call,
   race,
-  take
+  take,
+  select
 } from 'redux-saga/effects';
 import { noop } from 'lodash';
 import { redirect } from 'redux-first-router';
@@ -15,7 +16,7 @@ const {
   auth: { setOAuthToken, OAUTH_GRANT_FLOW_SUCCESS }
 } = modules;
 
-import { ROUTE_AUTH } from '../routing';
+import { ROUTE_AUTH, selectRouteType } from '../routing';
 import { BOOT, bootFinished } from './';
 
 function* getAppStartupDependencies() {
@@ -32,7 +33,11 @@ function* watchAppBoot() {
     if (user) {
       yield* getAppStartupDependencies();
     } else {
-      yield put(redirect({ type: ROUTE_AUTH }));
+      const routeType = yield select(selectRouteType);
+
+      if (routeType !== ROUTE_AUTH) {
+        yield put(redirect({ type: ROUTE_AUTH }));
+      }
     }
 
     yield call(onSuccess);
@@ -68,6 +73,16 @@ function* storeTokenAfterSuccessfulAuth() {
   });
 }
 
+function* fetchUserAfterSuccessfulAuth() {
+  yield takeLatest(OAUTH_GRANT_FLOW_SUCCESS, function*() {
+    yield put(fetchUser());
+  });
+}
+
 export default function* auth() {
-  yield all([fork(watchAppBoot, storeTokenAfterSuccessfulAuth)]);
+  yield all([
+    fork(watchAppBoot),
+    fork(storeTokenAfterSuccessfulAuth),
+    fork(fetchUserAfterSuccessfulAuth)
+  ]);
 }

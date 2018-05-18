@@ -8,6 +8,7 @@ module.exports = {
   },
   globals: {
     ...devEnv.eslintReact.globals,
-    module: true
+    module: true,
+    process: true
   }
 };

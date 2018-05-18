@@ -61,7 +61,7 @@ module.exports = {
               plugins: extraBabelPlugins,
               env: {
                 development: {
-                  plugins: [...extraBabelPlugins, 'react-hot-loader/babel']
+                  plugins: ['react-hot-loader/babel', ...extraBabelPlugins]
                 }
               }
             },

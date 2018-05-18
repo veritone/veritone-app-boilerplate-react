@@ -1,22 +1,9 @@
-import {
-  select,
-  spawn,
-  take,
-  takeLatest,
-  put,
-  all,
-  fork
-} from 'redux-saga/effects';
-import { redirect } from 'redux-first-router';
-import { modules } from 'veritone-redux-common';
-const {
-  user: { userIsAuthenticated }
-} = modules;
+import { select, take, all, fork, cancel } from 'redux-saga/effects';
 
 import {
   selectRoutesMap,
   selectRouteType,
-  ROUTE_FORBIDDEN
+  selectPreviousRoute
 } from 'modules/routing';
 
 // setup sagas on application boot
@@ -25,35 +12,37 @@ export function* watchRouteSagas() {
   const initialRoute = yield select(selectRouteType);
 
   // run sagas for initial route
+  let initialRouteTask;
   if (routesMap[initialRoute].saga) {
-    // todo: do these need to be explicitly canceled when routes exit?
-    yield spawn(routesMap[initialRoute].saga);
+    initialRouteTask = yield fork(routesMap[initialRoute].saga);
   }
 
-  // watch routing actions and spawn related sagas as needed
+  // watch routing actions -- spawn route sagas when the route mounts, and
+  // cancel them when the route exits.
+  let currentRouteTask;
   while (true) {
     const { type } = yield take(Object.keys(routesMap));
+    const { type: previousType } = yield select(selectPreviousRoute);
+
+    if (type === previousType) {
+      // no route change; leave sagas alone
+      return;
+    }
+
+    if (initialRouteTask && !initialRouteTask.isCancelled()) {
+      yield cancel(initialRouteTask);
+    }
+
+    if (currentRouteTask) {
+      yield cancel(currentRouteTask);
+    }
 
     if (routesMap[type].saga) {
-      yield spawn(routesMap[type].saga);
+      currentRouteTask = yield fork(routesMap[type].saga);
     }
   }
-}
-
-function* redirectOnApiAuthErrors() {
-  const forbiddenStatusCodes = [401, 403];
-
-  yield takeLatest(
-    ({ payload: { name, status } = {} } = {}) =>
-      name === 'ApiError' && forbiddenStatusCodes.includes(status),
-    function*() {
-      if (yield select(userIsAuthenticated)) { // ignore if user is not logged in
-        yield put(redirect({ type: ROUTE_FORBIDDEN }));
-      }
-    }
-  );
 }
 
 export default function* routes() {
-  yield all([fork(watchRouteSagas), fork(redirectOnApiAuthErrors)]);
+  yield all([fork(watchRouteSagas)]);
 }
