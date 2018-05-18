@@ -21,9 +21,9 @@ module.exports = {
     [
       '@neutrinojs/react',
       {
-        html: { title: 'App Foundation', window: { config: safeConfig } },
+        html: { title: 'Veritone App Boilerplate', window: { config: safeConfig } },
         devServer: {
-          public: 'local.facematch.com',
+          public: 'local.myveritoneapp.com',
           // open: true, // open browser window when server starts
           port: 3001,
           publicPath: '/'
