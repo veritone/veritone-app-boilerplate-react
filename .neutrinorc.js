@@ -1,6 +1,6 @@
 const merge = require('babel-merge');
 const path = require('path');
-const { pick } = require('lodash');
+const { pick, without, find } = require('lodash');
 
 const devConfig = require('./server.json');
 const safeConfigKeys = require('./configWhitelist.json');
@@ -21,23 +21,33 @@ module.exports = {
     [
       '@neutrinojs/react',
       {
-        html: { title: 'Veritone App Boilerplate', window: { config: safeConfig } },
+        html: {
+          title: 'Veritone App Boilerplate',
+          window: { config: safeConfig }
+        },
         devServer: {
           public: 'local.myveritoneapp.com',
           // open: true, // open browser window when server starts
           port: 3001,
           publicPath: '/'
+        },
+        style: {
+          modules: true,
+          test: /\.(css|scss)$/,
+          modulesTest: /\.(css|scss)$/,
+          loaders: [
+            {
+              loader: 'sass-loader',
+              useId: 'sass',
+              options: {
+                includePaths: [
+                  path.resolve('./src'),
+                  path.resolve('./resources')
+                ]
+              }
+            }
+          ]
         }
-      }
-    ],
-
-    [
-      'neutrino-middleware-styles-loader',
-      {
-        cssModules: true,
-        extractCSS: true,
-        sourceMap: true,
-        minimize: true
       }
     ],
 
@@ -55,20 +65,23 @@ module.exports = {
       neutrino.config.module
         .rule('compile')
         .use('babel')
-        .tap(options =>
-          merge(
-            {
-              plugins: extraBabelPlugins,
-              env: {
-                development: {
-                  plugins: ['react-hot-loader/babel', ...extraBabelPlugins]
-                }
-              }
-            },
-            options
-          )
+        .tap(
+          options => ({
+            ...options,
+            plugins: [
+              'react-hot-loader/babel',
+              ...extraBabelPlugins,
+              // hack: remove hot loader v3 from preset-react so we can use the
+              // v4 plugin instead
+              ...without(
+                options.plugins,
+                find(options.plugins, val =>
+                  val.includes('react-hot-loader/babel.js')
+                )
+              )
+            ]
+          })
         ),
-
     neutrino =>
       neutrino.config.resolve.alias
         .set('redux-api-middleware', 'redux-api-middleware-fixed')
