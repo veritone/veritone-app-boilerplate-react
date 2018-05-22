@@ -49,6 +49,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^1.0.0",
     "babel-merge": "^1.1.1",
     "date-fns": "^1.29.0",
     "prop-types": "^15.6.1",
@@ -65,8 +66,8 @@
     "redux-form": "^7.3.0",
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0",
-    "veritone-react-common": "^4.4.0",
+    "veritone-react-common": "^5.0.0",
     "veritone-redux-common": "^3.2.0",
-    "veritone-widgets": "^4.2.0"
+    "veritone-widgets": "^5.0.0"
   }
 }
