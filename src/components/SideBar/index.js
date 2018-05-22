@@ -16,7 +16,9 @@ export default class SideBar extends React.Component {
         style={{
           top: appBarHeight + topBarHeight
         }}
-      />
+      >
+        sidebar content
+      </aside>
     );
   }
 }
