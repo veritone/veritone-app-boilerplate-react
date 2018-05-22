@@ -8,24 +8,8 @@ const {
 import {
   selectRouteType,
   ROUTE_AUTH,
-  ROUTE_FORBIDDEN,
   ROUTE_HOME
 } from '../routing';
-
-function* redirectToForbiddenRouteOnApiAuthErrors() {
-  const forbiddenStatusCodes = [401, 403];
-
-  yield takeLatest(
-    ({ payload: { name, status } = {} } = {}) =>
-      name === 'ApiError' && forbiddenStatusCodes.includes(status),
-    function*() {
-      if (yield select(userIsAuthenticated)) {
-        // ignore if user is not logged in
-        yield put(redirect({ type: ROUTE_FORBIDDEN }));
-      }
-    }
-  );
-}
 
 function* redirectAwayFromAuthPageIfAlreadyAuthenticated() {
   yield takeLatest(ROUTE_AUTH, function*() {
@@ -47,7 +31,6 @@ function* redirectAwayFromAuthPageAfterUserLogin() {
 
 export function* loadAuthPage() {
   yield all([
-    fork(redirectToForbiddenRouteOnApiAuthErrors),
     fork(redirectAwayFromAuthPageIfAlreadyAuthenticated),
     fork(redirectAwayFromAuthPageAfterUserLogin)
   ]);
