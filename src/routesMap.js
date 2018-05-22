@@ -1,5 +1,10 @@
 import { NOT_FOUND } from 'redux-first-router';
-import { ROUTE_AUTH, ROUTE_HOME, ROUTE_FORBIDDEN } from 'modules/routing';
+import {
+  ROUTE_AUTH,
+  ROUTE_HOME,
+  ROUTE_FORBIDDEN,
+  ROUTE_EXAMPLE_TABS
+} from 'modules/routing';
 
 import { loadAuthPage } from 'modules/auth/saga';
 
@@ -14,6 +19,10 @@ export default {
     path: '/',
     component: 'Home',
     requiresAuth: true
+  },
+  [ROUTE_EXAMPLE_TABS]: {
+    path: '/tabs',
+    component: 'ExampleTabs'
   },
   [NOT_FOUND]: {
     path: '/not-found',
