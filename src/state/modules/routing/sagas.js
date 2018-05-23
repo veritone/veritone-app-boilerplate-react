@@ -1,4 +1,13 @@
-import { select, take, all, fork, cancel, put, takeLatest } from 'redux-saga/effects';
+import {
+  select,
+  take,
+  all,
+  fork,
+  cancel,
+  put,
+  takeLatest
+} from 'redux-saga/effects';
+import { isEqual } from 'lodash';
 import { redirect } from 'redux-first-router';
 import { modules } from 'veritone-redux-common';
 const {
@@ -11,6 +20,7 @@ import {
   selectPreviousRoute
 } from 'modules/routing';
 import { ROUTE_FORBIDDEN } from './';
+import { BOOT_FINISHED, bootDidFinish } from 'state/modules/app';
 
 // setup sagas on application boot
 export function* watchRouteSagas() {
@@ -20,16 +30,25 @@ export function* watchRouteSagas() {
   // cancel them when the route exits.
   let currentRouteTask;
   while (true) {
-    const { type } = yield take(Object.keys(routesMap));
-    const { type: previousType } = yield select(selectPreviousRoute);
+    const currentRoute = yield take(Object.keys(routesMap));
+    const previousRoute = yield select(selectPreviousRoute);
+
+    const hasBooted = yield select(bootDidFinish);
+    if (!hasBooted) {
+      yield take(BOOT_FINISHED)
+    }
 
     const userIsAuthed = yield select(userIsAuthenticated);
-    if (routesMap[type].requiresAuth && !userIsAuthed) {
+    if (routesMap[currentRoute.type].requiresAuth && !userIsAuthed) {
       // do not run sagas for inaccessible routes
       continue;
     }
 
-    if (type === previousType) {
+    if (
+      currentRoute.type === previousRoute.type &&
+      isEqual(currentRoute.payload, previousRoute.payload)
+      // todo: etc? query?
+    ) {
       // no route change; leave sagas alone
       continue;
     }
@@ -38,8 +57,8 @@ export function* watchRouteSagas() {
       yield cancel(currentRouteTask);
     }
 
-    if (routesMap[type].saga) {
-      currentRouteTask = yield fork(routesMap[type].saga);
+    if (routesMap[currentRoute.type].saga) {
+      currentRouteTask = yield fork(routesMap[currentRoute.type].saga);
     }
   }
 }

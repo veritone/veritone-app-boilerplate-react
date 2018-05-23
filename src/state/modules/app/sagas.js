@@ -41,7 +41,7 @@ function* watchAppBoot() {
       }
     }
 
-    yield put(bootFinished);
+    yield put(bootFinished());
   });
 }
 

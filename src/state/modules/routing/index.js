@@ -20,6 +20,7 @@ export const ROUTE_FORBIDDEN = 'route/ROUTE_FORBIDDEN';
 //   });
 // };
 
+export const selectCurrentRoutePayload = state => state.location.payload;
 export const selectRouteType = state => state.location.type;
 export const selectRoutesMap = state => state.location.routesMap;
 export const selectPreviousRoute = state => state.location.prev;
