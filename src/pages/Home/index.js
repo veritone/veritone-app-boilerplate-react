@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
-import { TopBar } from 'veritone-react-common';
 import Grid from '@material-ui/core/Grid';
 import Link from 'redux-first-router-link';
 
 import { ROUTE_EXAMPLE_TABS } from 'state/modules/routing';
 import AppContainer from 'components/AppContainer';
 import AppBar from 'components/AppBar';
+import TopBar from 'components/TopBar';
 import SideBar from 'components/SideBar';
 import ContentContainer from 'components/ContentContainer';
 
@@ -17,7 +17,7 @@ export default class Home extends React.Component {
       <Fragment>
         <SideBar />
         <AppBar />
-        <TopBar appBarOffset />
+        <TopBar />
         <AppContainer
           appBarOffset
           topBarOffset
