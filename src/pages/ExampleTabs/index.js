@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
-import { TopBar } from 'veritone-react-common';
+import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 
 import AppContainer from 'components/AppContainer';
 import AppBar from 'components/AppBar';
+import TopBar from 'components/TopBar';
 import SideBar from 'components/SideBar';
 import ContentContainer from 'components/ContentContainer';
 
@@ -13,14 +14,10 @@ export default class ExampleTabs extends React.Component {
   render() {
     return (
       <Fragment>
-        <SideBar/>
-        <AppBar/>
-        <TopBar appBarOffset/>
-        <AppContainer
-          appBarOffset
-          topBarOffset
-          sideBarOffset
-        >
+        <SideBar />
+        <AppBar />
+        <TopBar />
+        <AppContainer appBarOffset topBarOffset sideBarOffset>
           <ContentContainer>
             <Grid container>
               <Grid item xs={12}>
