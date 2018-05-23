@@ -36,6 +36,8 @@ function* watchAppBoot() {
 
       if (routeType !== ROUTE_AUTH) {
         yield put(redirect({ type: ROUTE_AUTH }));
+        yield take(OAUTH_GRANT_FLOW_SUCCESS);
+        yield* getAppStartupDependencies();
       }
     }
 
