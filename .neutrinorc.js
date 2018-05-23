@@ -60,28 +60,27 @@ module.exports = {
         ]
       }
     ],
+    neutrino => neutrino.config.output.publicPath('/'),
 
     neutrino =>
       neutrino.config.module
         .rule('compile')
         .use('babel')
-        .tap(
-          options => ({
-            ...options,
-            plugins: [
-              'react-hot-loader/babel',
-              ...extraBabelPlugins,
-              // hack: remove hot loader v3 from preset-react so we can use the
-              // v4 plugin instead
-              ...without(
-                options.plugins,
-                find(options.plugins, val =>
-                  val.includes('react-hot-loader/babel.js')
-                )
+        .tap(options => ({
+          ...options,
+          plugins: [
+            'react-hot-loader/babel',
+            ...extraBabelPlugins,
+            // hack: remove hot loader v3 from preset-react so we can use the
+            // v4 plugin instead
+            ...without(
+              options.plugins,
+              find(options.plugins, val =>
+                val.includes('react-hot-loader/babel.js')
               )
-            ]
-          })
-        ),
+            )
+          ]
+        })),
     neutrino =>
       neutrino.config.resolve.alias
         .set('redux-api-middleware', 'redux-api-middleware-fixed')
