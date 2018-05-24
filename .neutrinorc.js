@@ -92,8 +92,8 @@ module.exports = {
         .set('modules', path.join(__dirname, 'src/state/modules'))
         .set('sagas', path.join(__dirname, 'src/state/sagas'))
         // neutrino breaks if we try to alias "helpers" or "util" (try `yarn test`)
-        .set('.helpers', path.join(__dirname, 'src/helpers'))
-        .set('.util', path.join(__dirname, 'src/util')),
+        .set('~helpers', path.join(__dirname, 'src/helpers'))
+        .set('~util', path.join(__dirname, 'src/util')),
 
     neutrino => neutrino.config.devtool('cheap-module-source-map')
   ]
