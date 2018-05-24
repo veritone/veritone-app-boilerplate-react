@@ -45,15 +45,13 @@ export default {
     redirects: [
       {
         test: (getState, action) =>
-          // /tabs
-          !action.payload.tab ||
-          // /tabs/invalidTab
-          !['media', 'processed', 'suspects', 'notes'].includes(
+          // /tabs or /tabs/invalidTab
+          !['categories', 'tasks'].includes(
             action.payload.tab
           ),
         to: {
           type: ROUTE_EXAMPLE_TABS,
-          payload: { tab: 'media' }
+          payload: { tab: 'categories' }
         }
       }
     ]

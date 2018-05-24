@@ -15,6 +15,9 @@ import AppBar from 'components/AppBar';
 import TopBar from 'components/TopBar';
 import SideBar from 'components/SideBar';
 import ContentContainer from 'components/ContentContainer';
+
+import CategoriesTab from './CategoriesTab';
+import TasksTab from './TasksTab';
 import styles from './styles.scss';
 
 @connect(
@@ -43,6 +46,11 @@ export default class ExampleTabs extends React.Component {
       root: styles.tab
     };
 
+    const TabComponent = {
+      categories: CategoriesTab,
+      tasks: TasksTab
+    }[this.props.currentTab];
+
     return (
       <Fragment>
         <SideBar />
@@ -52,21 +60,19 @@ export default class ExampleTabs extends React.Component {
           <ContentContainer>
             <Grid container>
               <Grid item xs={12}>
+                This is the tabbed example page.
                 <Tabs
                   value={this.props.currentTab}
                   onChange={this.handleChangeTab}
                 >
-                  <Tab label="Media" value="media" classes={tabClasses} />
                   <Tab
-                    label="Processed"
-                    value="processed"
+                    label="Categories"
+                    value="categories"
                     classes={tabClasses}
                   />
-                  <Tab label="Suspects" value="suspects" classes={tabClasses} />
-                  <Tab label="Notes" value="notes" classes={tabClasses} />
+                  <Tab label="Tasks" value="tasks" classes={tabClasses} />
                 </Tabs>
-                This is the tabbed example page. Current tab is{' '}
-                {this.props.currentTab}
+                <TabComponent />
               </Grid>
             </Grid>
           </ContentContainer>
