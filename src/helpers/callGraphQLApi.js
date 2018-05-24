@@ -1,4 +1,5 @@
-import { constant } from 'lodash';
+
+import { constant, isFunction } from 'lodash';
 import { modules } from 'veritone-redux-common';
 const {
   config: { getConfig },
@@ -14,6 +15,10 @@ export default async function callGraphQLApi({
   dispatch,
   getState
 }) {
+  if (!isFunction(dispatch) || !isFunction(getState)) {
+    throw new Error('callGraphQLApi requires dispatch and getState functions')
+  }
+
   const state = getState();
   const config = getConfig(state);
   const endpoint = `${config.apiRoot}/${config.graphQLEndpoint}`;
