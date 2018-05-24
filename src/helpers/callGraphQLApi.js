@@ -1,15 +1,16 @@
+import { constant } from 'lodash';
 import { modules } from 'veritone-redux-common';
-
 const {
   config: { getConfig },
   auth: { selectOAuthToken }
 } = modules;
 
 export default async function callGraphQLApi({
-  types: [requestType, successType, failureType],
+  actionTypes: [requestType, successType, failureType],
   query,
   variables,
   operationName,
+  bailout = constant(false),
   dispatch,
   getState
 }) {
@@ -17,6 +18,11 @@ export default async function callGraphQLApi({
   const config = getConfig(state);
   const endpoint = `${config.apiRoot}/${config.graphQLEndpoint}`;
   const token = selectOAuthToken(state);
+
+  const shouldBail = bailout(state);
+  if (shouldBail) {
+    return;
+  }
 
   dispatch({ type: requestType, meta: { variables, operationName, query } });
 
@@ -44,7 +50,7 @@ export default async function callGraphQLApi({
 
     let error = new Error('API call failed');
     error.errors = [e];
-    throw error;
+    return error;
   }
 
   if (response.errors && response.errors.length) {
@@ -57,12 +63,12 @@ export default async function callGraphQLApi({
 
     let error = new Error('API response included errors');
     error.errors = response.errors;
-    throw error;
+    return error;
   }
 
   dispatch({
     type: successType,
-    payload: response,
+    payload: response.data,
     meta: { variables, operationName, query }
   });
 
