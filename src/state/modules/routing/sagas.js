@@ -50,6 +50,7 @@ export function* watchRouteSagas() {
       // todo: etc? query?
     ) {
       // no route change; leave sagas alone
+      // fixme -- seems like this might not work. prev/current are never same.
       continue;
     }
 
