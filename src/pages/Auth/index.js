@@ -1,14 +1,22 @@
 import React from 'react';
 import { OAuthLoginButton } from 'veritone-widgets';
 import { AppContainer } from 'veritone-react-common';
+import { string, shape } from 'prop-types';
+import withAppConfig from '~helpers/withAppConfig';
 
-const Auth = () => (
+const Auth = ({ appConfig }) => (
   <AppContainer>
     <OAuthLoginButton
-      clientId="f728c059-026f-4ba0-b5c2-7fb40b5121c4"
+      clientId={appConfig.OAuthClientID}
       redirectUri={window.origin}
     />
   </AppContainer>
 );
 
-export default Auth;
+Auth.propTypes = {
+  appConfig: shape({
+    OAuthClientID: string.isRequired
+  }).isRequired
+};
+
+export default withAppConfig(Auth);
