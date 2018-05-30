@@ -1,5 +1,4 @@
 import { all, fork, takeLatest, put, select } from 'redux-saga/effects';
-import { redirect } from 'redux-first-router';
 import { modules } from 'veritone-redux-common';
 const {
   user: { userIsAuthenticated, FETCH_USER_SUCCESS }
@@ -7,31 +6,42 @@ const {
 
 import {
   selectRouteType,
+  selectCurrentRoutePayload,
   ROUTE_AUTH,
   ROUTE_HOME
-} from '../routing';
+} from 'state/modules/routing';
 
-function* redirectAwayFromAuthPageIfAlreadyAuthenticated() {
-  yield takeLatest(ROUTE_AUTH, function*() {
-    if (yield select(userIsAuthenticated)) {
-      yield put(redirect({ type: ROUTE_HOME }));
-    }
-  });
+function* redirectAwayIfAlreadyAuthenticated() {
+  if (yield select(userIsAuthenticated)) {
+    yield put({ type: ROUTE_HOME });
+  }
 }
 
-function* redirectAwayFromAuthPageAfterUserLogin() {
+function* redirectAwayAfterUserLogin() {
   yield takeLatest(FETCH_USER_SUCCESS, function*() {
     const routeType = yield select(selectRouteType);
+    const currentRoutePayload = yield select(selectCurrentRoutePayload);
+    const { nextType, nextPayload } = currentRoutePayload.query;
 
     if (routeType === ROUTE_AUTH) {
-      yield put(redirect({ type: ROUTE_HOME }));
+      // look for redirect information in the query string, and send the user
+      // to their original destination if it exists.
+      const redirectType = nextType || ROUTE_HOME;
+      let parsedNextPayload;
+      try {
+        parsedNextPayload = JSON.parse(nextPayload);
+      } catch (e) {
+        /* */
+      }
+
+      yield put({ type: redirectType, payload: parsedNextPayload });
     }
   });
 }
 
 export function* loadAuthPage() {
   yield all([
-    fork(redirectAwayFromAuthPageIfAlreadyAuthenticated),
-    fork(redirectAwayFromAuthPageAfterUserLogin)
+    fork(redirectAwayIfAlreadyAuthenticated),
+    fork(redirectAwayAfterUserLogin)
   ]);
 }

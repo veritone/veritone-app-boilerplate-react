@@ -29,20 +29,20 @@ export function* watchRouteSagas() {
   // watch routing actions -- spawn route sagas when the route mounts, and
   // cancel them when the route exits.
   let currentRouteTask;
-  while (true) {
-    const currentRoute = yield take(Object.keys(routesMap));
-    const previousRoute = yield select(selectPreviousRoute);
 
+  yield takeLatest(Object.keys(routesMap), function*(currentRoute) {
     const hasBooted = yield select(bootDidFinish);
     if (!hasBooted) {
-      yield take(BOOT_FINISHED)
+      yield take(BOOT_FINISHED);
     }
 
     const userIsAuthed = yield select(userIsAuthenticated);
     if (routesMap[currentRoute.type].requiresAuth && !userIsAuthed) {
       // do not run sagas for inaccessible routes
-      continue;
+      return;
     }
+
+    const previousRoute = yield select(selectPreviousRoute);
 
     if (
       currentRoute.type === previousRoute.type &&
@@ -50,8 +50,8 @@ export function* watchRouteSagas() {
       // todo: etc? query?
     ) {
       // no route change; leave sagas alone
-      // fixme -- seems like this might not work. prev/current are never same.
-      continue;
+      // fixme -- seems like this might not work. prev/current are never same?
+      return;
     }
 
     if (currentRouteTask) {
@@ -61,7 +61,7 @@ export function* watchRouteSagas() {
     if (routesMap[currentRoute.type].saga) {
       currentRouteTask = yield fork(routesMap[currentRoute.type].saga);
     }
-  }
+  });
 }
 
 function* redirectToForbiddenRouteOnApiAuthErrors() {
