@@ -21,7 +21,7 @@ function* redirectAwayAfterUserLogin() {
   yield takeLatest(FETCH_USER_SUCCESS, function*() {
     const routeType = yield select(selectRouteType);
     const currentRoutePayload = yield select(selectCurrentRoutePayload);
-    const { nextType, nextPayload } = currentRoutePayload.query;
+    const { nextType, nextPayload } = currentRoutePayload.query || {};
 
     if (routeType === ROUTE_AUTH) {
       // look for redirect information in the query string, and send the user
