@@ -27,41 +27,44 @@ export default class CategoriesTab extends React.Component {
   static defaultProps = {};
 
   render() {
-    if (this.props.loading) {
-      return <RouteLoadingScreen minDelay={500} />;
-    }
-
     return (
       <div>
         <Typography variant="display1" gutterBottom>
           Engine Categories:
         </Typography>
-        <Paper>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>ID</TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell>Type</TableCell>
-                <TableCell>Icon Class</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {this.props.categories.map(category => {
-                return (
-                  <TableRow key={category.id}>
-                    <TableCell>{category.id}</TableCell>
-                    <TableCell>{category.name}</TableCell>
-                    <TableCell>
-                      {JSON.stringify(category.type, null, '\t')}
-                    </TableCell>
-                    <TableCell>{category.iconClass}</TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
-        </Paper>
+        <Typography variant="body1" gutterBottom>
+          (fetched when this tab is loaded)
+        </Typography>
+        {this.props.loading ? (
+          <RouteLoadingScreen minDelay={500} />
+        ) : (
+          <Paper>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>ID</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Type</TableCell>
+                  <TableCell>Icon Class</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.props.categories.map(category => {
+                  return (
+                    <TableRow key={category.id}>
+                      <TableCell>{category.id}</TableCell>
+                      <TableCell>{category.name}</TableCell>
+                      <TableCell>
+                        {JSON.stringify(category.type, null, '\t')}
+                      </TableCell>
+                      <TableCell>{category.iconClass}</TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </Paper>
+        )}
       </div>
     );
   }

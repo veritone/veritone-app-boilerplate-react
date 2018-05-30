@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { string, func } from 'prop-types';
-// import { push } from 'redux-first-router';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { string, func, objectOf, any, bool } from 'prop-types';
 
 import {
   selectCurrentRoutePayload,
   ROUTE_EXAMPLE_TABS
 } from 'state/modules/routing';
+import { engineIsLoading, selectEngine } from 'state/modules/engines-example';
 import AppContainer from 'components/AppContainer';
 import AppBar from 'components/AppBar';
 import TopBar from 'components/TopBar';
@@ -22,7 +23,15 @@ import styles from './styles.scss';
 
 @connect(
   state => ({
-    currentTab: selectCurrentRoutePayload(state).tab
+    currentTab: selectCurrentRoutePayload(state).tab,
+    engineExampleData: selectEngine(
+      state,
+      '18502331-1a02-4261-8350-9f36bbabf9cf'
+    ),
+    engineExampleDataLoading: engineIsLoading(
+      state,
+      '18502331-1a02-4261-8350-9f36bbabf9cf'
+    )
   }),
   {
     navigateToTab: tabName => ({
@@ -34,7 +43,9 @@ import styles from './styles.scss';
 export default class ExampleTabs extends React.Component {
   static propTypes = {
     currentTab: string.isRequired,
-    navigateToTab: func.isRequired
+    navigateToTab: func.isRequired,
+    engineExampleData: objectOf(any),
+    engineExampleDataLoading: bool
   };
 
   handleChangeTab = (e, tabName) => {
@@ -60,8 +71,20 @@ export default class ExampleTabs extends React.Component {
           <ContentContainer>
             <Grid container>
               <Grid item xs={12}>
-                This is the tabbed example page.
+                <p>
+                  This is the tabbed example page. The following data is fetched
+                  for all tabs:
+                </p>
+                {this.props.engineExampleDataLoading ? (
+                  <CircularProgress />
+                ) : (
+                  <pre>
+                    {JSON.stringify(this.props.engineExampleData, null, '\t')}
+                  </pre>
+                )}
+
                 <Tabs
+                  indicatorColor="primary"
                   value={this.props.currentTab}
                   onChange={this.handleChangeTab}
                 >
