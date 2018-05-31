@@ -23,15 +23,6 @@ export default {
     requiresAuth: true
   },
   [ROUTE_EXAMPLE_TAKEOVER]: {
-    // todo: takeover modals.
-    // should not load the "lower" page.
-
-    // should not render the lower page.
-
-    // can we avoid a white flash when the lower route exits and the new one
-    // enters/starts animating?
-
-    // should navigate to the lower page when the modal is closed
     path: '/example-takeover',
     modalOver: ROUTE_HOME,
     component: 'ExampleTakeoverModal',
