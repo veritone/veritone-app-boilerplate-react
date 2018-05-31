@@ -1,0 +1,18 @@
+.appBar {
+  height: 105px;
+  min-height: 105px;
+
+  .upperToolBar {
+    height: 60px;
+    min-height: 60px;
+
+    .title {
+      flex: 1;
+    }
+  }
+
+  .lowerToolBar {
+    height: 45px;
+    min-height: 45px;
+  }
+}

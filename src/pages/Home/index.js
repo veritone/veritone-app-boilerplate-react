@@ -2,7 +2,10 @@ import React, { Fragment } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Link from 'redux-first-router-link';
 
-import { ROUTE_EXAMPLE_TABS } from 'state/modules/routing';
+import {
+  ROUTE_EXAMPLE_TABS,
+  ROUTE_EXAMPLE_TAKEOVER
+} from 'state/modules/routing';
 import AppContainer from 'components/AppContainer';
 import AppBar from 'components/AppBar';
 import TopBar from 'components/TopBar';
@@ -18,15 +21,14 @@ export default class Home extends React.Component {
         <SideBar />
         <AppBar />
         <TopBar />
-        <AppContainer
-          appBarOffset
-          topBarOffset
-          sideBarOffset
-        >
+        <AppContainer appBarOffset topBarOffset sideBarOffset>
           <ContentContainer>
             <Grid container>
               <Grid item xs={6}>
-                <Link to={{ type: ROUTE_EXAMPLE_TABS }}>Tabbed example</Link>
+                <Link to={{ type: ROUTE_EXAMPLE_TABS }}>Tabbed example</Link>{' '}
+                <Link to={{ type: ROUTE_EXAMPLE_TAKEOVER }}>
+                  Fullscreen modal example
+                </Link>
               </Grid>
               <Grid item xs={6}>
                 {'home content test1234'.repeat(200)}
