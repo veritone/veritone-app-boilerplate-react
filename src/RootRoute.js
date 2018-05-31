@@ -1,7 +1,7 @@
 import React from 'react';
 import universal from 'react-universal-component';
 import { connect } from 'react-redux';
-import { string, bool } from 'prop-types';
+import { string, bool, objectOf, any } from 'prop-types';
 import { modules } from 'veritone-redux-common';
 const {
   user: { userIsAuthenticated }
@@ -14,18 +14,22 @@ import { bootDidFinish } from 'state/modules/app';
 const RootRoute = ({
   pageComponent,
   isLoading = false,
-  isPermittedToRenderCurrentPage
+  isPermittedToRenderCurrentPage = false,
+  currentRoute
 }) =>
-  isPermittedToRenderCurrentPage ? (
-    <UniversalComponent page={pageComponent} isLoading={isLoading} />
-  ) : (
-    ''
+  isPermittedToRenderCurrentPage && (
+    <UniversalComponent
+      page={pageComponent}
+      isLoading={isLoading}
+      currentRoute={currentRoute}
+    />
   );
 
 RootRoute.propTypes = {
   pageComponent: string.isRequired,
   isLoading: bool,
-  isPermittedToRenderCurrentPage: bool
+  isPermittedToRenderCurrentPage: bool,
+  currentRoute: objectOf(any).isRequired
 };
 
 const UniversalComponent = universal(props => import(`pages/${props.page}`), {
@@ -42,6 +46,7 @@ export default connect(state => {
   const currentRoute = routesMap[routeType];
 
   return {
+    currentRoute,
     isPermittedToRenderCurrentPage:
       !currentRoute.requiresAuth || userIsAuthenticated(state),
     pageComponent: currentRoute.component,
