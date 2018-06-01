@@ -5,29 +5,29 @@ import styles from './styles.scss';
 
 export default class RouteLoadingScreen extends React.Component {
   static propTypes = {
-    minDelay: number
+    delay: number
   };
 
   static defaultProps = {
-    // only show loading screen after minDelay ms (prevent flashes)
-    minDelay: 0
+    // only show loading screen after delay ms (prevent flashes)
+    delay: 0
   };
 
   _timer = null; // eslint-disable-line
 
   state = {
-    // immediately visible unless minDelay is set
-    visible: this.props.minDelay <= 0
+    // immediately visible unless delay is set
+    visible: this.props.delay <= 0
   };
 
   componentDidMount() {
-    if (this.props.minDelay <= 0) {
+    if (this.props.delay <= 0) {
       return;
     }
 
     this._timer = setTimeout(() => {
       this.setState({ visible: true });
-    }, this.props.minDelay);
+    }, this.props.delay);
   }
 
   componentWillUnmount() {

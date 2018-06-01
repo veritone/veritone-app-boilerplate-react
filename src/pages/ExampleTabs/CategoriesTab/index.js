@@ -36,7 +36,7 @@ export default class CategoriesTab extends React.Component {
           (fetched when this tab is loaded)
         </Typography>
         {this.props.loading ? (
-          <RouteLoadingScreen minDelay={500} />
+          <RouteLoadingScreen delay={500} />
         ) : (
           <Paper>
             <Table>
