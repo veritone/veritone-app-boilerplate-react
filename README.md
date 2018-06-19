@@ -34,6 +34,8 @@ yarn install
 * [Register a new Veritone application](https://developer.veritone.com/applications/overview/new/details).
   * URL: `http://local.veritone-sample-app.com:3001`
   * Oauth2 Redirect URL: `http://local.veritone-sample-app.com:3001`
+  
+* Add your application's Client ID, found in Developer App, to `server.json` at the key `OAuthClientID`.
 
 * Start the development server
 ```sh
