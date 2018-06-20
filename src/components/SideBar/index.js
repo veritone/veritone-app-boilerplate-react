@@ -17,7 +17,7 @@ export default class SideBar extends React.Component {
           top: appBarHeight + topBarHeight
         }}
       >
-        sidebar content
+        Pick Me Up Validator
       </aside>
     );
   }

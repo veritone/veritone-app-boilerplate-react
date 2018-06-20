@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Link from 'redux-first-router-link';
 import Button from '@material-ui/core/Button';
+import Webcam from 'react-webcam';
+import WebcamCapture from 'components/WebcamCapture';
 
 import {
   ROUTE_EXAMPLE_TABS,
@@ -43,30 +45,17 @@ export default class Home extends React.Component {
         <AppContainer appBarOffset topBarOffset sideBarOffset>
           <ContentContainer>
             <Grid container>
-              <Grid item xs={6}>
-                <ul>
-                  <li>
-                    <Link to={{ type: ROUTE_EXAMPLE_TABS }}>
-                      Tabbed example
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={{ type: ROUTE_EXAMPLE_TAKEOVER }}>
-                      Fullscreen modal example
-                    </Link>
-                  </li>
-                  <li>
-                    <Button
-                      variant="outlined"
-                      onClick={this.showExampleFormModal}
-                    >
-                      Form input modal
-                    </Button>
-                  </li>
-                </ul>
+              <Grid item xs={9}>
+                <Webcam   
+                  audio={false}
+                  height={480}
+                  screenshotFormat="image/webp"
+                  width={640}
+                />
+                <WebcamCapture />
               </Grid>
-              <Grid item xs={6}>
-                {'home content test1234'.repeat(200)}
+              <Grid item xs={3}>
+                {'I am a child\n\n'.repeat(20)}
               </Grid>
               {this.state.exampleFormModalOpen && (
                 // Note that this isn't open=this.state.exampleFormModalOpen

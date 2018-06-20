@@ -6033,6 +6033,10 @@ jsesc@~0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
 
+jslib-html5-camera-photo@^1.0.0-beta.0:
+  version "1.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/jslib-html5-camera-photo/-/jslib-html5-camera-photo-1.0.0-beta.2.tgz#d8a55a7fcce80f2b895d2ce2981cc622e6a53bba"
+
 json-loader@^0.5.4:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/json-loader/-/json-loader-0.5.7.tgz#dca14a70235ff82f0ac9a3abeb60d337a365185d"
@@ -6275,6 +6279,10 @@ levn@^0.3.0, levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+lint@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/lint/-/lint-1.1.2.tgz#35ed064f322547c331358d899868664968ba371f"
 
 load-json-file@^1.0.0:
   version "1.1.0"
@@ -8405,6 +8413,12 @@ react-hot-loader@^4.2.0:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.0.2"
 
+react-html5-camera-photo@^1.0.0-beta.10:
+  version "1.0.0-beta.10"
+  resolved "https://registry.yarnpkg.com/react-html5-camera-photo/-/react-html5-camera-photo-1.0.0-beta.10.tgz#6cc6be2b93f4d4c388da7c9c806b27447452f08d"
+  dependencies:
+    jslib-html5-camera-photo "^1.0.0-beta.0"
+
 react-infinite-calendar@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/react-infinite-calendar/-/react-infinite-calendar-2.3.1.tgz#97f63983b3ee1ec0df476b36b8227c7db0edbf85"
@@ -8520,6 +8534,12 @@ react-universal-component@^2.9.0:
   dependencies:
     hoist-non-react-statics "^2.2.1"
     prop-types "^15.5.10"
+
+react-webcam@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/react-webcam/-/react-webcam-0.5.0.tgz#ab272930381a2cf0fe02ab8b22df34b94953d191"
+  dependencies:
+    prop-types "^15.5.8"
 
 react@^16.3.0, react@^16.3.2:
   version "16.3.2"
