@@ -2,5 +2,5 @@
   "apiRoot": "https://api.veritone.com",
   "switchAppRoute": "https://app.veritone.com/switch-app",
   "graphQLEndpoint": "v3/graphql",
-  "OAuthClientID": "c94ece36-bdd1-457e-8220-8f027a6a27b0"
+  "OAuthClientID": "f728c059-026f-4ba0-b5c2-7fb40b5121c4"
 }

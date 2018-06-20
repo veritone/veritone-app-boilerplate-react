@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Link from 'redux-first-router-link';
 import Button from '@material-ui/core/Button';
 import Webcam from 'react-webcam';
+import WebcamCapture from 'components/WebcamCapture';
 
 import {
   ROUTE_EXAMPLE_TABS,
@@ -51,6 +52,7 @@ export default class Home extends React.Component {
                   screenshotFormat="image/webp"
                   width={640}
                 />
+                <WebcamCapture />
               </Grid>
               <Grid item xs={3}>
                 {'I am a child\n\n'.repeat(20)}
