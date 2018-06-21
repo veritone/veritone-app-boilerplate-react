@@ -57,7 +57,20 @@ module.exports = {
         setupFiles: [
           path.resolve('./test/testSuitePolyfills.js'),
           path.resolve('./test/configureEnzyme.js')
-        ]
+        ],
+        moduleNameMapper: {
+          '^resources(.*)$': '<rootDir>/resources$1',
+          '^components(.*)$': '<rootDir>/src/components$1',
+          '^pages(.*)$': '<rootDir>/src/pages$1',
+          '^state(.*)$': '<rootDir>/src/state$1',
+          '^modules(.*)$': '<rootDir>/src/state/modules$1',
+          '^sagas(.*)$': '<rootDir>/src/state/sagas$1',
+          '^~helpers(.*)$': '<rootDir>/src/helpers$1',
+          '^~util(.*)$': '<rootDir>/src/util$1',
+          '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+            '<rootDir>/test/__mocks__/fileMock.js',
+          '\\.(css|scss)$': 'identity-obj-proxy'
+        }
       }
     ],
     neutrino => neutrino.config.output.publicPath('/'),
