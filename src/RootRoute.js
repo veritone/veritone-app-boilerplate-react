@@ -32,7 +32,7 @@ RootRoute.propTypes = {
   currentRoute: objectOf(any).isRequired
 };
 
-const UniversalComponent = universal(props => import(`pages/${props.page}`), {
+const UniversalComponent = universal(props => import(`pages/${props.page}/index.js`), {
   minDelay: 500,
   chunkName: props => props.page,
   loading: <RouteLoadingScreen />,
