@@ -77,7 +77,7 @@
     "redux-thunk": "^2.2.0",
     "serve": "^9.1.0",
     "veritone-react-common": "^5.0.0",
-    "veritone-redux-common": "^3.3.0",
+    "veritone-redux-common": "^3.5.0",
     "veritone-widgets": "^5.0.0"
   }
 }
