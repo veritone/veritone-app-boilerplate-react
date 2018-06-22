@@ -4,11 +4,16 @@
   "main": "index.js",
   "author": "Mitch Robb <mrobb@veritone.com>",
   "private": false,
+  "now": {
+    "alias": "veritone-app-boilerplate-react"
+  },
   "scripts": {
     "start": "neutrino start",
     "build": "neutrino build",
     "test": "neutrino test",
+    "deploy": "now && now alias",
     "test:watch": "neutrino test --watch",
+    "now-start": "serve -s",
     "format": "prettier --write \"./src/**/*.{js,scss}\"",
     "lint": "npm run lint:js; npm run lint:styles",
     "lint:js": "eslint ./src",
@@ -35,6 +40,7 @@
     "identity-obj-proxy": "^3.0.0",
     "neutrino": "^8.2.3",
     "node-sass": "^4.9.0",
+    "now": "^11.2.4",
     "postcss-loader": "^2.1.5",
     "prettier": "^1.12.1",
     "sass-loader": "^7.0.1",
@@ -68,6 +74,7 @@
     "redux-form": "^7.3.0",
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0",
+    "serve": "^9.1.0",
     "veritone-react-common": "^5.0.0",
     "veritone-redux-common": "^3.3.0",
     "veritone-widgets": "^5.0.0"
