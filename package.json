@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Mitch Robb <mrobb@veritone.com>",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "neutrino start",
     "build": "neutrino build",
@@ -48,7 +48,7 @@
       "pre-commit": "yarn lint"
     }
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "dependencies": {
     "@material-ui/core": "^1.0.0",
     "babel-merge": "^1.1.1",
