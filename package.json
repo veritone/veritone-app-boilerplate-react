@@ -39,6 +39,7 @@
     "husky": "^1.0.0-rc.6",
     "identity-obj-proxy": "^3.0.0",
     "neutrino": "^8.2.3",
+    "node-fetch": "^2.1.2",
     "node-sass": "^4.9.0",
     "now": "^11.2.4",
     "postcss-loader": "^2.1.5",
