@@ -2,7 +2,7 @@ const merge = require('babel-merge');
 const path = require('path');
 const { pick, without, find } = require('lodash');
 
-const devConfig = require('./server.json');
+const devConfig = require('./config.json');
 const safeConfigKeys = require('./configWhitelist.json');
 
 const extraBabelPlugins = [
