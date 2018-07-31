@@ -15,7 +15,7 @@
     "test:watch": "neutrino test --watch",
     "now-start": "serve -s",
     "format": "prettier --write \"./src/**/*.{js,scss}\"",
-    "lint": "npm run lint:js && npm run lint:styles",
+    "lint": "yarn run lint:js && yarn run lint:styles",
     "lint:js": "eslint ./src",
     "lint:styles": "stylelint \"src/**/*.scss\""
   },
@@ -52,7 +52,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint"
+      "pre-commit": "yarn lint && yarn test"
     }
   },
   "license": "Apache-2.0",
