@@ -16,7 +16,7 @@
     "now-start": "serve -s",
     "format": "prettier --write \"./src/**/*.{js,scss}\"",
     "lint": "yarn run lint:js && yarn run lint:styles",
-    "lint:js": "eslint ./src",
+    "lint:js": "eslint ./src --max-warnings 0",
     "lint:styles": "stylelint \"src/**/*.scss\""
   },
   "devDependencies": {
