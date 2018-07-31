@@ -15,7 +15,7 @@
     "test:watch": "neutrino test --watch",
     "now-start": "serve -s",
     "format": "prettier --write \"./src/**/*.{js,scss}\"",
-    "lint": "npm run lint:js; npm run lint:styles",
+    "lint": "npm run lint:js && npm run lint:styles",
     "lint:js": "eslint ./src",
     "lint:styles": "stylelint \"src/**/*.scss\""
   },
