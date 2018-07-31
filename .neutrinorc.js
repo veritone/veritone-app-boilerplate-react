@@ -21,6 +21,9 @@ module.exports = {
     [
       '@neutrinojs/react',
       {
+        minify: {
+          babel: false
+        },
         html: {
           title: 'Veritone App Boilerplate',
           window: { config: safeConfig }
