@@ -54,6 +54,18 @@ $ yarn build  # Build production assets
 [veri]: https://veritone.com/
 [rdce]: https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
 
+### Creating a new project based on this boilerplate
+1. Create and enter a directory for your project: `mkdir my-project; cd my-project`
+2. Create a new git repo: `git init`
+3. Add this boilerplate as a remote: `git remote add boilerplate https://github.com/veritone/veritone-app-boilerplate-react`
+4. Fetch the new remote: `git fetch --all`
+5. Merge the boilerplate: `git merge boilerplate/master`
+
+### Merging boilerplate changes into an existing app
+If you followed the steps above to create your project based on this boilerplate, staying up to date is simple:
+1. Fetch the latest changes: `git fetch --all`
+2. Merge the boilerplate: `git merge boilerplate/master`
+
 # License
 Copyright 2018, Veritone Inc.
 
