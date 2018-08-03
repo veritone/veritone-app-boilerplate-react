@@ -5,6 +5,7 @@ import createSagaMiddleware from 'redux-saga';
 import queryString from 'query-string';
 import thunk from 'redux-thunk';
 import { find } from 'lodash';
+import { createLogger } from 'redux-logger';
 
 // imports for router
 import { connectRoutes } from 'redux-first-router';
@@ -37,13 +38,19 @@ const {
   }
 });
 
+const isDev = process.env.NODE_ENV === 'development';
+
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const composeMiddlewares = applyMiddleware(
   routerMiddleware,
   apiMiddleware,
   sagaMiddleware,
-  thunk
+  thunk,
+  isDev &&
+    createLogger({
+      collapsed: true
+    })
 );
 
 export default function configureStore() {
