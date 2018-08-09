@@ -1,4 +1,3 @@
-
 import { constant, isFunction } from 'lodash';
 import { modules } from 'veritone-redux-common';
 const {
@@ -16,7 +15,7 @@ export default async function callGraphQLApi({
   getState
 }) {
   if (!isFunction(dispatch) || !isFunction(getState)) {
-    throw new Error('callGraphQLApi requires dispatch and getState functions')
+    throw new Error('callGraphQLApi requires dispatch and getState functions');
   }
 
   const state = getState();

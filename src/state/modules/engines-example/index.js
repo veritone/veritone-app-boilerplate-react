@@ -119,7 +119,7 @@ export const fetchEngineCategories = ({ type } = {}) => async (
     variables: { type },
     dispatch,
     getState,
-    bailout: (state) => engineCategoriesAreLoading(state)
+    bailout: state => engineCategoriesAreLoading(state)
   });
 };
 

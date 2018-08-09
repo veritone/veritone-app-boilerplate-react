@@ -32,13 +32,16 @@ RootRoute.propTypes = {
   currentRoute: objectOf(any).isRequired
 };
 
-const UniversalComponent = universal(props => import(`pages/${props.page}/index.js`), {
-  minDelay: 500,
-  chunkName: props => props.page,
-  loading: <RouteLoadingScreen />,
-  error: <RouteErrorScreen />,
-  onError: (...error) => console.log(error)
-});
+const UniversalComponent = universal(
+  props => import(`pages/${props.page}/index.js`),
+  {
+    minDelay: 500,
+    chunkName: props => props.page,
+    loading: <RouteLoadingScreen />,
+    error: <RouteErrorScreen />,
+    onError: (...error) => console.log(error)
+  }
+);
 
 export default connect(state => {
   const routesMap = selectRoutesMap(state);

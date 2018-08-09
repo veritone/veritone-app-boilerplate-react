@@ -12,7 +12,7 @@ const {
 } = modules;
 
 const errorMessages = {
-  unauthorized_client: 'Your account does not have access to this application.',
+  unauthorized_client: 'Your account does not have access to this application.'
 };
 
 const genericErrorMessage = error =>

@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 
 import { modules } from 'veritone-redux-common';
 import { objectOf, any } from 'prop-types';
-import getDisplayName from 'recompose/getDisplayName'
+import getDisplayName from 'recompose/getDisplayName';
 
 const {
   config: { getConfig }

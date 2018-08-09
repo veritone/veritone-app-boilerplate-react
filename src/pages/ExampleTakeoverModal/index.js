@@ -24,10 +24,13 @@ function Transition(props) {
   return <Slide direction="down" {...props} />;
 }
 
-@connect(null, (dispatch, ownProps) => ({
-  // navigate to the page this modal has "opened over"
-  onClose: () => dispatch({ type: ownProps.currentRoute.modalOver })
-}))
+@connect(
+  null,
+  (dispatch, ownProps) => ({
+    // navigate to the page this modal has "opened over"
+    onClose: () => dispatch({ type: ownProps.currentRoute.modalOver })
+  })
+)
 export default class ExampleTakeoverModal extends React.Component {
   static propTypes = {
     // eslint-disable-next-line

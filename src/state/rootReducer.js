@@ -6,7 +6,9 @@ const { namespace: userNamespace, reducer: userReducer } = user;
 const { namespace: authNamespace, reducer: authReducer } = auth;
 
 import appReducer, { namespace as appNamespace } from 'modules/app';
-import enginesExampleReducer, { namespace as enginesExampleNamespace } from 'modules/engines-example';
+import enginesExampleReducer, {
+  namespace as enginesExampleNamespace
+} from 'modules/engines-example';
 
 export default extraReducers =>
   combineReducers({

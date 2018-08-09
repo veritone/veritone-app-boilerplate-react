@@ -24,7 +24,6 @@ export default class ExampleFormDialog extends React.Component {
   };
   static defaultProps = {};
 
-
   render() {
     return (
       <Dialog

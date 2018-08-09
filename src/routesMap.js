@@ -37,9 +37,7 @@ export default {
       {
         test: (getState, action) =>
           // /tabs or /tabs/invalidTab
-          !['categories', 'tasks'].includes(
-            action.payload.tab
-          ),
+          !['categories', 'tasks'].includes(action.payload.tab),
         to: {
           type: ROUTE_EXAMPLE_TABS,
           payload: { tab: 'categories' }
