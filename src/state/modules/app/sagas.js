@@ -110,7 +110,7 @@ function* redirectAndAwaitOAuthGrant() {
 function* redirectToVeritoneInternalLogin() {
   const config = yield select(getConfig);
 
-  window.location = `${config.loginRoute}/?redirect=${window.origin}`;
+  window.location = `${config.loginRoute}/?redirect=${window.location.href}`;
 }
 
 function* fetchUserWithStoredTokenOrCookie() {
