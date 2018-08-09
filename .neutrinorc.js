@@ -26,7 +26,9 @@ module.exports = {
           window: { config: safeConfig }
         },
         devServer: {
-          public: 'local.veritone-sample-app.com',
+          public: devConfig.useOAuthGrant
+            ? 'local.veritone-sample-app.com'
+            : 'local.veritone.com',
           // open: true, // open browser window when server starts
           port: 3001,
           publicPath: '/'

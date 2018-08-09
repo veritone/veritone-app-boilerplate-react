@@ -1,6 +1,8 @@
 [
   "apiRoot",
   "switchAppRoute",
+  "loginRoute",
   "graphQLEndpoint",
-  "OAuthClientID"
+  "OAuthClientID",
+  "useOAuthGrant"
 ]

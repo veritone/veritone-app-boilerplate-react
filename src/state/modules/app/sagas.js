@@ -19,9 +19,11 @@ const {
     FETCH_USER_FAILURE,
     FETCH_USER_APPLICATIONS,
     FETCH_USER_APPLICATIONS_SUCCESS,
-    FETCH_USER_APPLICATIONS_FAILURE
+    FETCH_USER_APPLICATIONS_FAILURE,
+    LOGOUT_SUCCESS
   },
-  auth: { setOAuthToken, OAUTH_GRANT_FLOW_SUCCESS }
+  auth: { setOAuthToken, OAUTH_GRANT_FLOW_SUCCESS },
+  config: { getConfig }
 } = modules;
 
 import {
@@ -63,59 +65,77 @@ function* getAppStartupDependencies() {
 
 function* watchAppBoot() {
   yield takeLatest(BOOT, function*() {
-    const user = yield* fetchUserWithStoredToken();
+    const config = yield select(getConfig);
+    const user = yield* fetchUserWithStoredTokenOrCookie();
 
     if (user) {
+      // login success with stored credentials or cookie
       yield* getAppStartupDependencies();
       yield put(bootFinished());
     } else {
-      const routeType = yield select(selectRouteType);
-      const routePayload = yield select(selectCurrentRoutePayload);
-
-      if (routeType !== ROUTE_AUTH) {
-        yield put({
-          type: ROUTE_AUTH,
-          payload: {
-            query: {
-              nextType: routeType,
-              nextPayload: !isEmpty(routePayload)
-                ? JSON.stringify(routePayload)
-                : undefined
-            }
-          }
-        });
+      if (config.useOAuthGrant) {
+        yield* redirectAndAwaitOAuthGrant();
+      } else {
+        yield* redirectToVeritoneInternalLogin();
       }
-
-      yield put(bootFinished());
-
-      // retry boot after logging in
-      yield take(OAUTH_GRANT_FLOW_SUCCESS);
-      yield put(boot());
     }
   });
 }
 
-function* fetchUserWithStoredToken() {
-  const existingToken = yield call([localStorage, 'getItem'], 'OAuthToken');
+function* redirectAndAwaitOAuthGrant() {
+  const routeType = yield select(selectRouteType);
+  const routePayload = yield select(selectCurrentRoutePayload);
 
-  if (existingToken) {
-    yield put(setOAuthToken(existingToken));
-    yield put(fetchUser());
-
-    const [successAction] = yield race([
-      take(FETCH_USER_SUCCESS),
-      take([a => a.type === FETCH_USER && a.error, FETCH_USER_FAILURE])
-    ]);
-
-    // todo: this could differentiate between auth error (expired token) and failure
-    // (api error)
-    return successAction ? successAction.payload : false;
+  if (routeType !== ROUTE_AUTH) {
+    yield put({
+      type: ROUTE_AUTH,
+      payload: {
+        query: {
+          nextType: routeType,
+          nextPayload: !isEmpty(routePayload)
+            ? JSON.stringify(routePayload)
+            : undefined
+        }
+      }
+    });
   }
 
-  return false;
+  yield put(bootFinished());
+
+  // retry boot after logging in
+  yield take(OAUTH_GRANT_FLOW_SUCCESS);
+  yield put(boot());
 }
 
-function* storeTokenAfterSuccessfulAuth() {
+function* redirectToVeritoneInternalLogin() {
+  const config = yield select(getConfig);
+
+  window.location = `${config.loginRoute}/?redirect=${window.origin}`;
+}
+
+function* fetchUserWithStoredTokenOrCookie() {
+  const existingOAuthToken = yield call(
+    [localStorage, 'getItem'],
+    'OAuthToken'
+  );
+
+  if (existingOAuthToken) {
+    yield put(setOAuthToken(existingOAuthToken));
+  }
+
+  yield put(fetchUser());
+
+  const [successAction] = yield race([
+    take(FETCH_USER_SUCCESS),
+    take([a => a.type === FETCH_USER && a.error, FETCH_USER_FAILURE])
+  ]);
+
+  // todo: this could differentiate between auth error (expired token) and failure
+  // (api error)
+  return successAction ? successAction.payload : false;
+}
+
+function* storeTokenAfterSuccessfulOAuthGrant() {
   yield takeLatest(OAUTH_GRANT_FLOW_SUCCESS, function*({
     payload: { OAuthToken }
   }) {
@@ -129,10 +149,18 @@ function* storeTokenAfterSuccessfulAuth() {
 //   });
 // }
 
+function* clearStoredTokenAfterLogout() {
+  yield takeLatest(LOGOUT_SUCCESS, function*() {
+    yield call([localStorage, 'removeItem'], 'OAuthToken');
+    yield call([location, 'reload']);
+  });
+}
+
 export default function* auth() {
   yield all([
     fork(watchAppBoot),
-    fork(storeTokenAfterSuccessfulAuth)
+    fork(storeTokenAfterSuccessfulOAuthGrant),
+    fork(clearStoredTokenAfterLogout)
     // fork(fetchUserAfterSuccessfulAuth)
   ]);
 }
