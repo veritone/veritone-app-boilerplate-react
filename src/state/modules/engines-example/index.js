@@ -1,6 +1,5 @@
 import { helpers } from 'veritone-redux-common';
-const { createReducer } = helpers;
-import callGraphQLApi from '~helpers/callGraphQLApi';
+const { createReducer, callGraphQLApi } = helpers;
 import { without, union } from 'lodash';
 import { set } from 'lodash/fp';
 
