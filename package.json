@@ -58,6 +58,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@material-ui/core": "^1.0.0",
+    "@material-ui/icons": "^1.0.0",
     "babel-merge": "^1.1.1",
     "date-fns": "^1.29.0",
     "prop-types": "^15.6.1",
