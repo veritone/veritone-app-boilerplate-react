@@ -1,6 +1,7 @@
 const merge = require('babel-merge');
 const path = require('path');
 const { pick, without, find } = require('lodash');
+const UglifyjsPlugin = require('uglifyjs-webpack-plugin');
 
 const devConfig = require('./config.json');
 const safeConfigKeys = require('./configWhitelist.json');
@@ -32,6 +33,9 @@ module.exports = {
           // open: true, // open browser window when server starts
           port: 3001,
           publicPath: '/'
+        },
+        minify: {
+          babel: false
         },
         style: {
           modules: true,
@@ -75,6 +79,7 @@ module.exports = {
         }
       }
     ],
+    neutrino => neutrino.config.plugin('minify').use(UglifyjsPlugin),
     neutrino => neutrino.config.output.publicPath('/'),
 
     neutrino =>
