@@ -79,7 +79,9 @@ module.exports = {
         }
       }
     ],
-    neutrino => neutrino.config.plugin('minify').use(UglifyjsPlugin),
+    process.env.NODE_ENV === 'production'
+      ? neutrino => neutrino.config.plugin('minify').use(UglifyjsPlugin)
+      : null,
     neutrino => neutrino.config.output.publicPath('/'),
 
     neutrino =>
