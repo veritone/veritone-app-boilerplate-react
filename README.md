@@ -29,7 +29,7 @@ yarn install
   * edit `/etc/hosts` with `sudo` using your preferred text editor
   * add: `127.0.0.1   local.veritone-sample-app.com`
 
-* [Create a Veritone developer account](https://www.veritone.com/onboarding/#/signUp?type=developer) if you don't already have one.
+* [Create a Veritone developer account](https://www.veritone.com/devsignup) if you don't already have one.
 
 * [Register a new Veritone application](https://developer.veritone.com/applications/overview/new/details).
   * URL: `http://local.veritone-sample-app.com:3001`
