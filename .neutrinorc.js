@@ -28,7 +28,7 @@ module.exports = {
         },
         devServer: {
           public: devConfig.useOAuthGrant
-            ? 'local.veritone-sample-app.com'
+            ? 'localhost'
             : 'local.veritone.com',
           // open: true, // open browser window when server starts
           port: 3001,

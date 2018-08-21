@@ -25,15 +25,11 @@ cd veritone-app-boilerplate-react/
 yarn install
 ```
 
-* Create a local development alias in your `hosts` file for the new app.
-  * edit `/etc/hosts` with `sudo` using your preferred text editor
-  * add: `127.0.0.1   local.veritone-sample-app.com`
-
-* [Create a Veritone developer account](https://www.veritone.com/devsignup) if you don't already have one.
+* [Create a Veritone developer account](https://www.veritone.com/onboarding/#/signUp?type=developer) if you don't already have one.
 
 * [Register a new Veritone application](https://developer.veritone.com/applications/overview/new/details).
-  * URL: `http://local.veritone-sample-app.com:3001`
-  * Oauth2 Redirect URL: `http://local.veritone-sample-app.com:3001`
+  * URL: `http://localhost:3001`
+  * Oauth2 Redirect URL: `http://localhost:3001`
   
 * Add your application's Client ID, found in Developer App, to `config.json` at the key `OAuthClientID`.
 
@@ -42,7 +38,7 @@ yarn install
 yarn start
 ```
 
-* The sample app should now be serving at `http://local.veritone-sample-app.com:3001`.
+* The sample app should now be serving at `http://localhost:3001`.
 
 ### Building for Production
 ```bash
