@@ -1,8 +1,8 @@
 {
-  "apiRoot": "https://api.aws-dev.veritone.com",
-  "switchAppRoute": "https://www.aws-dev.veritone.com/switch-app",
-  "loginRoute": "https://aws-dev.veritone.com/login/#",
+  "apiRoot": "https://api.veritone.com",
+  "switchAppRoute": "https://www.veritone.com/switch-app",
+  "loginRoute": "https://www.veritone.com/login/#",
   "graphQLEndpoint": "v3/graphql",
-  "OAuthClientID": "1cae6457-c3b6-4444-b824-e407116df57e",
+  "OAuthClientID": "<your application ID here>",
   "useOAuthGrant": true
 }
