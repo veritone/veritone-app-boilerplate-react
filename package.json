@@ -54,12 +54,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && yarn test"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
     "*.js": ["prettier --write", "eslint --fix --max-warnings 0", "git add"],
-    "*.scss": ["stylelint --syntax=scss", "git add"]
+    "*.scss": ["stylelint --fix --syntax=scss", "git add"]
   },
   "license": "Apache-2.0",
   "dependencies": {
