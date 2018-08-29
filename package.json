@@ -38,6 +38,7 @@
     "eslint-plugin-react": "^7.8.2",
     "husky": "^1.0.0-rc.6",
     "identity-obj-proxy": "^3.0.0",
+    "lint-staged": "^7.2.2",
     "neutrino": "^8.2.3",
     "node-fetch": "^2.1.2",
     "node-sass": "^4.9.0",
@@ -53,8 +54,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint && yarn test"
+      "pre-commit": "lint-staged && yarn test"
     }
+  },
+  "lint-staged": {
+    "*.js": ["prettier --write", "eslint --fix --max-warnings 0", "git add"],
+    "*.scss": ["stylelint --syntax=scss", "git add"]
   },
   "license": "Apache-2.0",
   "dependencies": {
