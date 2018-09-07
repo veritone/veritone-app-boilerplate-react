@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import { handleImplicitRedirect } from 'veritone-oauth-helpers';
 
-import validateAppConfig from '~helpers/validateAppConfig'
+import validateAppConfig from '~helpers/validateAppConfig';
 import configureStore from 'state/configureStore';
 
 import 'resources/styles/global.scss';
