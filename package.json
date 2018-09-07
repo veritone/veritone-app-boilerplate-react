@@ -14,10 +14,10 @@
     "deploy": "now && now alias",
     "test:watch": "neutrino test --watch",
     "now-start": "serve -s",
-    "format": "prettier --write \"./src/**/*.{js,scss}\"",
+    "format": "prettier --write \"./**/*.{js,css,scss,md,json}\"",
     "lint": "yarn run lint:js && yarn run lint:styles",
-    "lint:js": "eslint ./src --max-warnings 0",
-    "lint:styles": "stylelint \"src/**/*.scss\""
+    "lint:js": "eslint ./ --max-warnings 0",
+    "lint:styles": "stylelint \"./**/*.{css,scss}\""
   },
   "devDependencies": {
     "@neutrinojs/jest": "^8.2.3",
@@ -59,8 +59,18 @@
     }
   },
   "lint-staged": {
-    "*.js": ["prettier --write", "eslint --max-warnings 0", "git add"],
-    "*.scss": ["stylelint --syntax=scss", "git add"]
+    "*.{js,css,scss,md,json}": [
+      "prettier --write",
+      "git add"
+    ],
+    "./**/*.js": [
+      "eslint --max-warnings 0",
+      "git add"
+    ],
+    "./**/*.{scss,css}": [
+      "stylelint",
+      "git add"
+    ]
   },
   "license": "Apache-2.0",
   "dependencies": {
