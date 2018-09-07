@@ -24,7 +24,40 @@ module.exports = {
       {
         html: {
           title: 'Veritone App Boilerplate',
-          window: { config: safeConfig }
+          window: { config: safeConfig },
+          links: [
+            {
+              href:
+                'https://static.veritone.com/assets/favicon/apple-touch-icon.png',
+              rel: 'apple-touch-icon',
+              sizes: '180x180'
+            },
+            {
+              href:
+                'https://static.veritone.com/assets/favicon/favicon-32x32.png',
+              rel: 'icon',
+              sizes: '32x32',
+              type: 'image/png'
+            },
+            {
+              href:
+                'https://static.veritone.com/assets/favicon/favicon-16x16.png',
+              rel: 'icon',
+              sizes: '16x16',
+              type: 'image/png'
+            },
+            {
+              href:
+                'https://static.veritone.com/assets/favicon/safari-pinned-tab.svg',
+              rel: 'mask-icon',
+              color: '#597cb1'
+            },
+            {
+              href: 'https://static.veritone.com/assets/favicon/favicon.ico',
+              rel: 'shortcut icon',
+              type: 'image/x-icon'
+            }
+          ]
         },
         devServer: {
           public: devConfig.useOAuthGrant ? 'localhost' : 'local.veritone.com',
