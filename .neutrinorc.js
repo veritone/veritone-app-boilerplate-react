@@ -1,9 +1,8 @@
-const merge = require('babel-merge');
 const path = require('path');
 const { pick, without, find } = require('lodash');
 const UglifyjsPlugin = require('uglifyjs-webpack-plugin');
 
-const devConfig = require('./config.json');
+const appConfig = require('./config.json');
 const safeConfigKeys = require('./configWhitelist.json');
 
 const extraBabelPlugins = [
@@ -13,7 +12,7 @@ const extraBabelPlugins = [
   'babel-plugin-universal-import'
 ].map(require.resolve);
 
-const safeConfig = pick(devConfig, safeConfigKeys);
+const safeConfig = pick(appConfig, safeConfigKeys);
 module.exports = {
   options: {
     tests: 'src'
@@ -24,7 +23,10 @@ module.exports = {
       {
         html: {
           title: 'Veritone App Boilerplate',
-          window: { config: safeConfig },
+          // config.json can be baked into the app for static deployments.
+          // Otherwise just add a stub at window.config where something else can
+          // inject config at runtime.
+          window: { config: appConfig.useHardcodedConfig ? safeConfig : {} },
           links: [
             {
               href:
@@ -60,7 +62,7 @@ module.exports = {
           ]
         },
         devServer: {
-          public: devConfig.useOAuthGrant ? 'localhost' : 'local.veritone.com',
+          public: appConfig.useOAuthGrant ? 'localhost' : 'local.veritone.com',
           // open: true, // open browser window when server starts
           port: 3001,
           publicPath: '/'
