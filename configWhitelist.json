@@ -4,5 +4,6 @@
   "loginRoute",
   "graphQLEndpoint",
   "OAuthClientID",
-  "useOAuthGrant"
+  "useOAuthGrant",
+  "pendoKey"
 ]
