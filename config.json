@@ -4,6 +4,7 @@
   "loginRoute": "https://www.veritone.com/login/#",
   "graphQLEndpoint": "v3/graphql",
   "OAuthClientID": "<your application ID here>",
+  "pendoKey": null,
   "useOAuthGrant": true,
   "useHardcodedConfig": true
 }

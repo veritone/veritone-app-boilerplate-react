@@ -8,10 +8,11 @@ import {
   take,
   select
 } from 'redux-saga/effects';
-import { find, isEmpty } from 'lodash';
+import { find, isEmpty, get } from 'lodash';
 import { modules } from 'veritone-redux-common';
 const {
   user: {
+    selectUser,
     fetchUser,
     fetchEnabledApps,
     FETCH_USER,
@@ -25,6 +26,8 @@ const {
   auth: { setOAuthToken, OAUTH_GRANT_FLOW_SUCCESS },
   config: { getConfig }
 } = modules;
+
+import importPendo from 'resources/vendor/js/pendo';
 
 import {
   ROUTE_AUTH,
@@ -142,12 +145,6 @@ function* storeTokenAfterSuccessfulOAuthGrant() {
     yield call([localStorage, 'setItem'], 'OAuthToken', OAuthToken);
   });
 }
-//
-// function* fetchUserAfterSuccessfulAuth() {
-//   yield takeLatest(OAUTH_GRANT_FLOW_SUCCESS, function*() {
-//     yield put(fetchUser());
-//   });
-// }
 
 function* clearStoredTokenAfterLogout() {
   yield takeLatest(LOGOUT_SUCCESS, function*() {
@@ -156,11 +153,37 @@ function* clearStoredTokenAfterLogout() {
   });
 }
 
+function* initializePendoAfterUserLogin() {
+  const config = yield select(getConfig);
+
+  if (!config.pendoKey) {
+    return;
+  }
+
+  yield take(FETCH_USER_SUCCESS);
+  const user = yield select(selectUser);
+
+  importPendo(config.pendoKey);
+
+  window.pendo.initialize({
+    visitor: {
+      id: user.userId,
+      email: user.userName
+    },
+    account: {
+      id: get(user, 'groups[0].groupId'),
+      groupname: get(user, 'groups[0].groupName'),
+      organizationId: user.organization.organizationId,
+      organizationName: user.organization.organizationName
+    }
+  });
+}
+
 export default function* auth() {
   yield all([
     fork(watchAppBoot),
     fork(storeTokenAfterSuccessfulOAuthGrant),
-    fork(clearStoredTokenAfterLogout)
-    // fork(fetchUserAfterSuccessfulAuth)
+    fork(clearStoredTokenAfterLogout),
+    fork(initializePendoAfterUserLogin)
   ]);
 }
