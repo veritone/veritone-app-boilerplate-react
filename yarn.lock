@@ -142,201 +142,207 @@
     babel-preset-minify "^0.2.0"
     webpack-sources "1.0.1"
 
-"@neutrinojs/babel-minify@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/babel-minify/-/babel-minify-8.2.3.tgz#87344dafd32d29b2203b7700057898e89482406a"
+"@neutrinojs/babel-minify@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/babel-minify/-/babel-minify-8.3.0.tgz#bc550f3a18d7e8a8a46054ed80798148e9e31f5a"
   dependencies:
     "@neutrinojs/babel-minify-webpack-plugin" "^0.2.0"
+    webpack "^3.12.0"
 
-"@neutrinojs/chunk@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/chunk/-/chunk-8.2.3.tgz#bed8fb8cfc16edec35a55b0195526848d451ea29"
+"@neutrinojs/chunk@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/chunk/-/chunk-8.3.0.tgz#615448b429ad69012f1db657879bc06aabfe2aab"
   dependencies:
     name-all-modules-plugin "^1.0.1"
-    webpack "^3.10.0"
+    webpack "^3.12.0"
     webpack-sources "1.0.1"
 
-"@neutrinojs/clean@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/clean/-/clean-8.2.3.tgz#675e87097d3a3f9509314f2bdde2e7dac7b1527b"
+"@neutrinojs/clean@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/clean/-/clean-8.3.0.tgz#30229ca3cde6d2f64c6a2b164f1ffbde04ba2ddb"
   dependencies:
-    clean-webpack-plugin "^0.1.17"
+    clean-webpack-plugin "^0.1.19"
     deepmerge "^1.5.2"
 
-"@neutrinojs/compile-loader@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/compile-loader/-/compile-loader-8.2.3.tgz#6bf8f804b20c0f0b9181209711afd7d5f7e2a9ae"
+"@neutrinojs/compile-loader@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/compile-loader/-/compile-loader-8.3.0.tgz#a77715d3b4e06358fc47fd4c2d7fae126d7ff63f"
   dependencies:
-    babel-core "^6.26.0"
-    babel-loader "^7.1.2"
-    babel-merge "^1.1.0"
+    babel-core "^6.26.3"
+    babel-loader "^7.1.4"
+    babel-merge "^1.1.1"
     deepmerge "^1.5.2"
-    webpack "^3.10.0"
+    webpack "^3.12.0"
 
-"@neutrinojs/copy@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/copy/-/copy-8.2.3.tgz#cf15ddeff6605950304d2406f3a240d5e2d10fff"
+"@neutrinojs/copy@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/copy/-/copy-8.3.0.tgz#d41a7124b677103134063ef1a4f2a671da1b7758"
   dependencies:
-    copy-webpack-plugin "^4.2.3"
+    copy-webpack-plugin "^4.5.1"
     deepmerge "^1.5.2"
 
-"@neutrinojs/dev-server@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/dev-server/-/dev-server-8.2.3.tgz#ffad742abf252ec16874d2acc7c81c2faaac5397"
+"@neutrinojs/dev-server@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/dev-server/-/dev-server-8.3.0.tgz#75e9a238fa01dab3d2e5b4daacb735d8395b8541"
   dependencies:
     deepmerge "^1.5.2"
-    opn "^5.1.0"
-    webpack "^3.10.0"
-    webpack-dev-server "^2.9.7"
+    opn "^5.3.0"
+    webpack "^3.12.0"
+    webpack-dev-server "^2.11.2"
     webpack-sources "1.0.1"
 
-"@neutrinojs/env@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/env/-/env-8.2.3.tgz#f91b871832320de2c801f9e69a021c41f61387c5"
+"@neutrinojs/env@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/env/-/env-8.3.0.tgz#265722162dd94a02ac5e108c9aefbcbe52435358"
   dependencies:
-    webpack "^3.10.0"
+    webpack "^3.12.0"
     webpack-sources "1.0.1"
 
-"@neutrinojs/font-loader@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/font-loader/-/font-loader-8.2.3.tgz#06ab656d8b15fbdf4e6fa90cc3d33c489d38db71"
+"@neutrinojs/font-loader@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/font-loader/-/font-loader-8.3.0.tgz#21f67017ae0432a6db9e901e39eb081e34af6ee0"
   dependencies:
     deepmerge "^1.5.2"
-    file-loader "^1.0.0"
-    url-loader "^1.0.0"
+    file-loader "^1.1.11"
+    url-loader "^1.0.1"
+    webpack "^3.12.0"
 
-"@neutrinojs/hot@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/hot/-/hot-8.2.3.tgz#f1a1325327f9e21c974a8bca7deaf86b241afc67"
+"@neutrinojs/hot@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/hot/-/hot-8.3.0.tgz#ea5efc7ddc42cac93e71f6a8ebec69dfdebbb1a0"
   dependencies:
-    webpack "^3.10.0"
+    webpack "^3.12.0"
     webpack-sources "1.0.1"
 
-"@neutrinojs/html-loader@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/html-loader/-/html-loader-8.2.3.tgz#5546c867dd33c624712d3e542b3eaeb84e799705"
+"@neutrinojs/html-loader@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/html-loader/-/html-loader-8.3.0.tgz#6ae29a662fa0ed882f34aa8f20bb8f420f46d966"
   dependencies:
-    html-loader "^0.5.1"
+    html-loader "^0.5.5"
 
-"@neutrinojs/html-template@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/html-template/-/html-template-8.2.3.tgz#10732967f7a79363074b8baeed0f25bd9a7a08c9"
-  dependencies:
-    deepmerge "^1.5.2"
-    html-webpack-plugin "^3.0.0"
-    html-webpack-template "^6.1.0"
-
-"@neutrinojs/image-loader@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/image-loader/-/image-loader-8.2.3.tgz#45c931d02b801975c4e35c6b9dc0989aec8c501b"
+"@neutrinojs/html-template@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/html-template/-/html-template-8.3.0.tgz#51a5236d237af55e51ed9b2fe93374a75037baf0"
   dependencies:
     deepmerge "^1.5.2"
-    file-loader "^1.0.0"
-    url-loader "^1.0.0"
+    html-webpack-plugin "^3.2.0"
+    html-webpack-template "^6.2.0"
+    webpack "^3.12.0"
 
-"@neutrinojs/image-minify@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/image-minify/-/image-minify-8.2.3.tgz#ed718c6d486b25c5be20466ac318705e2e9f39df"
+"@neutrinojs/image-loader@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/image-loader/-/image-loader-8.3.0.tgz#c540c34a048f02123edd592b32fa2a198c8866d4"
+  dependencies:
+    deepmerge "^1.5.2"
+    file-loader "^1.1.11"
+    url-loader "^1.0.1"
+    webpack "^3.12.0"
+
+"@neutrinojs/image-minify@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/image-minify/-/image-minify-8.3.0.tgz#641d66bcb36e08653f4c957bc86ad5d84a7a4ea7"
   dependencies:
     deepmerge "^1.5.2"
     imagemin-gifsicle "5.2.0"
     imagemin-mozjpeg "^6.0.0"
-    imagemin-pngquant "^5.0.0"
+    imagemin-pngquant "^5.1.0"
     imagemin-svgo "^6.0.0"
-    imagemin-webp "^4.0.0"
+    imagemin-webp "^4.1.0"
     imagemin-webpack "^1.1.2"
+    webpack "^3.12.0"
 
-"@neutrinojs/jest@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/jest/-/jest-8.2.3.tgz#9cc492b371ebc4b125c5b0eb9834dba60911cc55"
+"@neutrinojs/jest@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/jest/-/jest-8.3.0.tgz#9a07267cfd364b64174276754ba4a5fe177c895c"
   dependencies:
-    "@neutrinojs/loader-merge" "^8.2.3"
-    babel-core "^6.26.0"
-    babel-plugin-transform-es2015-modules-commonjs "^6.26.0"
-    babel-preset-jest "^21.0.2"
+    "@neutrinojs/loader-merge" "^8.3.0"
+    babel-core "^6.26.3"
+    babel-plugin-transform-es2015-modules-commonjs "^6.26.2"
+    babel-preset-jest "^21.2.0"
     deepmerge "^1.5.2"
-    eslint "^4.12.1"
-    eslint-plugin-jest "^21.4.2"
-    jest-cli "^21.0.2"
+    eslint "^4.19.1"
+    eslint-plugin-jest "^21.15.1"
+    jest-cli "^21.2.1"
     ramda "^0.25.0"
     yargs "^11.0.0"
 
-"@neutrinojs/loader-merge@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/loader-merge/-/loader-merge-8.2.3.tgz#8d0d40468127c29080710f9bc1d5253df926a839"
+"@neutrinojs/loader-merge@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/loader-merge/-/loader-merge-8.3.0.tgz#0669e06e61cc0430b991f9919b488c8975353cb0"
   dependencies:
     deepmerge "^1.5.2"
 
-"@neutrinojs/minify@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/minify/-/minify-8.2.3.tgz#04fb606d921ff8c234c5f1ea7dcb566d2115bacd"
+"@neutrinojs/minify@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/minify/-/minify-8.3.0.tgz#dafe9d2b769467c5513c81b6e9bd0307931aba01"
   dependencies:
-    "@neutrinojs/babel-minify" "^8.2.3"
-    "@neutrinojs/image-minify" "^8.2.3"
-    "@neutrinojs/style-minify" "^8.2.3"
+    "@neutrinojs/babel-minify" "^8.3.0"
+    "@neutrinojs/image-minify" "^8.3.0"
+    "@neutrinojs/style-minify" "^8.3.0"
     deepmerge "^1.5.2"
 
-"@neutrinojs/react@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/react/-/react-8.2.3.tgz#c375a763763d05d67f43ca15241b99844f90496a"
+"@neutrinojs/react@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/react/-/react-8.3.0.tgz#bbc0b9c394e5fca586145fcab54c7ccf767adc6b"
   dependencies:
-    "@neutrinojs/compile-loader" "^8.2.3"
-    "@neutrinojs/loader-merge" "^8.2.3"
-    "@neutrinojs/web" "^8.2.3"
+    "@neutrinojs/compile-loader" "^8.3.0"
+    "@neutrinojs/loader-merge" "^8.3.0"
+    "@neutrinojs/web" "^8.3.0"
     babel-plugin-jsx-pragmatic "^1.0.2"
     babel-plugin-transform-class-properties "^6.24.1"
     babel-plugin-transform-es2015-classes "^6.24.1"
-    babel-plugin-transform-object-rest-spread "^6.26.0"
     babel-plugin-transform-react-jsx "^6.24.1"
-    babel-preset-react "^6.24.0"
+    babel-preset-react "^6.24.1"
     deepmerge "^1.5.2"
-    eslint "^4.12.1"
-    eslint-plugin-react "^7.5.1"
+    eslint "^4.19.1"
+    eslint-plugin-react "^7.8.2"
     react-hot-loader "^3.1.3"
 
-"@neutrinojs/style-loader@^8.2.0", "@neutrinojs/style-loader@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/style-loader/-/style-loader-8.2.3.tgz#ddf0027af1264d60725c169be28442014fe23ed4"
+"@neutrinojs/style-loader@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/style-loader/-/style-loader-8.3.0.tgz#3b651076687ebd1f2f75fe4032c9f0de030f8e7e"
   dependencies:
-    css-hot-loader "^1.3.4"
-    css-loader "^0.28.7"
+    css-hot-loader "^1.3.9"
+    css-loader "^0.28.11"
     deepmerge "^1.5.2"
     extract-text-webpack-plugin "^3.0.2"
-    style-loader "^0.20.0"
+    style-loader "^0.20.3"
+    webpack "^3.12.0"
 
-"@neutrinojs/style-minify@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/style-minify/-/style-minify-8.2.3.tgz#70089365293b57ec357c4a4853a47d574aaa16b5"
+"@neutrinojs/style-minify@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/style-minify/-/style-minify-8.3.0.tgz#d968dae24dd69f784cf9b21fa76fdbf1421d14f3"
   dependencies:
     deepmerge "^1.5.2"
     optimize-css-assets-webpack-plugin "^3.2.0"
 
-"@neutrinojs/web@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/web/-/web-8.2.3.tgz#f15989cbd07bff950a0d3fc72641a45fa16b5279"
+"@neutrinojs/web@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/web/-/web-8.3.0.tgz#c76611042eaf0587606b67c157108c8d90151439"
   dependencies:
-    "@neutrinojs/chunk" "^8.2.3"
-    "@neutrinojs/clean" "^8.2.3"
-    "@neutrinojs/compile-loader" "^8.2.3"
-    "@neutrinojs/copy" "^8.2.3"
-    "@neutrinojs/dev-server" "^8.2.3"
-    "@neutrinojs/env" "^8.2.3"
-    "@neutrinojs/font-loader" "^8.2.3"
-    "@neutrinojs/hot" "^8.2.3"
-    "@neutrinojs/html-loader" "^8.2.3"
-    "@neutrinojs/html-template" "^8.2.3"
-    "@neutrinojs/image-loader" "^8.2.3"
-    "@neutrinojs/loader-merge" "^8.2.3"
-    "@neutrinojs/minify" "^8.2.3"
-    "@neutrinojs/style-loader" "^8.2.3"
+    "@neutrinojs/chunk" "^8.3.0"
+    "@neutrinojs/clean" "^8.3.0"
+    "@neutrinojs/compile-loader" "^8.3.0"
+    "@neutrinojs/copy" "^8.3.0"
+    "@neutrinojs/dev-server" "^8.3.0"
+    "@neutrinojs/env" "^8.3.0"
+    "@neutrinojs/font-loader" "^8.3.0"
+    "@neutrinojs/hot" "^8.3.0"
+    "@neutrinojs/html-loader" "^8.3.0"
+    "@neutrinojs/html-template" "^8.3.0"
+    "@neutrinojs/image-loader" "^8.3.0"
+    "@neutrinojs/loader-merge" "^8.3.0"
+    "@neutrinojs/minify" "^8.3.0"
+    "@neutrinojs/style-loader" "^8.3.0"
     babel-plugin-syntax-dynamic-import "^6.18.0"
-    babel-preset-env "^1.6.0"
+    babel-plugin-transform-object-rest-spread "^6.26.0"
+    babel-preset-env "^1.7.0"
     deepmerge "^1.5.2"
-    fast-async "^6.3.4"
-    webpack "^3.10.0"
+    fast-async "^6.3.7"
+    webpack "^3.12.0"
     webpack-manifest-plugin "^1.3.2"
     webpack-sources "1.0.1"
-    worker-loader "^1.0.0"
+    worker-loader "^1.1.1"
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -408,9 +414,9 @@ acorn-jsx@^3.0.0:
   dependencies:
     acorn "^3.0.4"
 
-acorn@>=2.5.2, acorn@^5.0.0, acorn@^5.5.0:
-  version "5.7.1"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.1.tgz#f095829297706a7c9776958c0afc8930a9b9d9d8"
+"acorn@>= 2.5.2 <= 5.7.3":
+  version "5.7.3"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
 
 acorn@^3.0.4:
   version "3.3.0"
@@ -419,6 +425,14 @@ acorn@^3.0.4:
 acorn@^4.0.3, acorn@^4.0.4:
   version "4.0.13"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.13.tgz#105495ae5361d697bd195c825192e1ad7f253787"
+
+acorn@^5.0.0, acorn@^5.5.0:
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.1.tgz#f095829297706a7c9776958c0afc8930a9b9d9d8"
+
+ajv-errors@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ajv-errors/-/ajv-errors-1.0.0.tgz#ecf021fa108fd17dfb5e6b383f2dd233e31ffc59"
 
 ajv-keywords@^2.1.0:
   version "2.1.1"
@@ -752,7 +766,7 @@ babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
-babel-core@^6.0.0, babel-core@^6.24.1, babel-core@^6.26.0:
+babel-core@^6.0.0, babel-core@^6.24.1, babel-core@^6.26.0, babel-core@^6.26.3:
   version "6.26.3"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.26.3.tgz#b2e2f09e342d0f0c88e2f02e067794125e75c207"
   dependencies:
@@ -944,15 +958,15 @@ babel-jest@^21.2.0:
     babel-plugin-istanbul "^4.0.0"
     babel-preset-jest "^21.2.0"
 
-babel-loader@^7.1.2:
-  version "7.1.4"
-  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-7.1.4.tgz#e3463938bd4e6d55d1c174c5485d406a188ed015"
+babel-loader@^7.1.4:
+  version "7.1.5"
+  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-7.1.5.tgz#e3ee0cd7394aa557e013b02d3e492bfd07aa6d68"
   dependencies:
     find-cache-dir "^1.0.0"
     loader-utils "^1.0.2"
     mkdirp "^0.5.1"
 
-babel-merge@^1.1.0, babel-merge@^1.1.1:
+babel-merge@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/babel-merge/-/babel-merge-1.1.1.tgz#626af5682cdb99c5ad5675424be868e644173d52"
   dependencies:
@@ -1214,7 +1228,7 @@ babel-plugin-transform-es2015-modules-amd@^6.22.0, babel-plugin-transform-es2015
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
 
-babel-plugin-transform-es2015-modules-commonjs@^6.23.0, babel-plugin-transform-es2015-modules-commonjs@^6.24.1, babel-plugin-transform-es2015-modules-commonjs@^6.26.0:
+babel-plugin-transform-es2015-modules-commonjs@^6.23.0, babel-plugin-transform-es2015-modules-commonjs@^6.24.1, babel-plugin-transform-es2015-modules-commonjs@^6.26.2:
   version "6.26.2"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-modules-commonjs/-/babel-plugin-transform-es2015-modules-commonjs-6.26.2.tgz#58a793863a9e7ca870bdc5a881117ffac27db6f3"
   dependencies:
@@ -1423,7 +1437,7 @@ babel-polyfill@^6.26.0:
     core-js "^2.5.0"
     regenerator-runtime "^0.10.5"
 
-babel-preset-env@^1.6.0:
+babel-preset-env@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/babel-preset-env/-/babel-preset-env-1.7.0.tgz#dea79fa4ebeb883cd35dab07e260c1c9c04df77a"
   dependencies:
@@ -1464,7 +1478,7 @@ babel-preset-flow@^6.23.0:
   dependencies:
     babel-plugin-transform-flow-strip-types "^6.22.0"
 
-babel-preset-jest@^21.0.2, babel-preset-jest@^21.2.0:
+babel-preset-jest@^21.2.0:
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-21.2.0.tgz#ff9d2bce08abd98e8a36d9a8a5189b9173b85638"
   dependencies:
@@ -1499,7 +1513,7 @@ babel-preset-minify@^0.2.0:
     babel-plugin-transform-undefined-to-void "^6.8.3"
     lodash.isplainobject "^4.0.6"
 
-babel-preset-react@^6.24.0:
+babel-preset-react@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-preset-react/-/babel-preset-react-6.24.1.tgz#ba69dfaea45fc3ec639b6a4ecea6e17702c91380"
   dependencies:
@@ -2210,7 +2224,7 @@ clean-css@4.1.x:
   dependencies:
     source-map "0.5.x"
 
-clean-webpack-plugin@^0.1.17:
+clean-webpack-plugin@^0.1.19:
   version "0.1.19"
   resolved "https://registry.yarnpkg.com/clean-webpack-plugin/-/clean-webpack-plugin-0.1.19.tgz#ceda8bb96b00fe168e9b080272960d20fdcadd6d"
   dependencies:
@@ -2539,9 +2553,9 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
 
-copy-webpack-plugin@^4.2.3:
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/copy-webpack-plugin/-/copy-webpack-plugin-4.5.1.tgz#fc4f68f4add837cc5e13d111b20715793225d29c"
+copy-webpack-plugin@^4.5.1:
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/copy-webpack-plugin/-/copy-webpack-plugin-4.5.3.tgz#14a224d205e46f7a79f7956028e1da6df2225ff2"
   dependencies:
     cacache "^10.0.4"
     find-cache-dir "^1.0.0"
@@ -2678,17 +2692,17 @@ css-color-names@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
 
-css-hot-loader@^1.3.4:
-  version "1.3.9"
-  resolved "https://registry.yarnpkg.com/css-hot-loader/-/css-hot-loader-1.3.9.tgz#ed22b41126920134a4a2246d7d32113e2425c754"
+css-hot-loader@^1.3.9:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/css-hot-loader/-/css-hot-loader-1.4.2.tgz#6fa7ae7b8e309bb8be3b7b586efd702073c68611"
   dependencies:
     loader-utils "^1.1.0"
     lodash "^4.17.5"
     normalize-url "^1.9.1"
 
-css-loader@^0.28.7:
+css-loader@^0.28.11:
   version "0.28.11"
-  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-0.28.11.tgz#c3f9864a700be2711bb5a2462b2389b1a392dab7"
+  resolved "http://registry.npmjs.org/css-loader/-/css-loader-0.28.11.tgz#c3f9864a700be2711bb5a2462b2389b1a392dab7"
   dependencies:
     babel-code-frame "^6.26.0"
     css-selector-tokenizer "^0.7.0"
@@ -3640,9 +3654,9 @@ eslint-plugin-import@^2.12.0:
     read-pkg-up "^2.0.0"
     resolve "^1.6.0"
 
-eslint-plugin-jest@^21.4.2:
-  version "21.17.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-21.17.0.tgz#fdb00e2f9ff16987d6ebcf2c75c7add105760bbb"
+eslint-plugin-jest@^21.15.1:
+  version "21.25.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-21.25.1.tgz#166c6b9d33bd7bc5b8ece62cff878ba207600bb6"
 
 eslint-plugin-lodash@^2.7.0:
   version "2.7.0"
@@ -3654,7 +3668,7 @@ eslint-plugin-promise@^3.7.0:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.8.0.tgz#65ebf27a845e3c1e9d6f6a5622ddd3801694b621"
 
-eslint-plugin-react@^7.5.1, eslint-plugin-react@^7.8.2:
+eslint-plugin-react@^7.8.2:
   version "7.9.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.9.1.tgz#101aadd15e7c7b431ed025303ac7b421a8e3dc15"
   dependencies:
@@ -3674,7 +3688,7 @@ eslint-visitor-keys@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
 
-eslint@^4.12.1, eslint@^4.19.1:
+eslint@^4.19.1:
   version "4.19.1"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.19.1.tgz#32d1d653e1d90408854bfb296f076ec7e186a300"
   dependencies:
@@ -4027,11 +4041,11 @@ fancy-log@^1.1.0:
     color-support "^1.1.3"
     time-stamp "^1.0.0"
 
-fast-async@^6.3.4:
-  version "6.3.7"
-  resolved "https://registry.yarnpkg.com/fast-async/-/fast-async-6.3.7.tgz#b4a406f2c59890b8b1b4c8468a36bd7f1a57e47f"
+fast-async@^6.3.7:
+  version "6.3.8"
+  resolved "https://registry.yarnpkg.com/fast-async/-/fast-async-6.3.8.tgz#031b9e1d5a84608b117b3e7c999ad477ed2b08a2"
   dependencies:
-    nodent-compiler "^3.2.4"
+    nodent-compiler "^3.2.10"
     nodent-runtime ">=3.2.1"
 
 fast-deep-equal@^1.0.0:
@@ -4116,9 +4130,9 @@ file-entry-cache@^2.0.0:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
 
-file-loader@^1.0.0:
+file-loader@^1.1.11:
   version "1.1.11"
-  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-1.1.11.tgz#6fe886449b0f2a936e43cabaac0cdbfb369506f8"
+  resolved "http://registry.npmjs.org/file-loader/-/file-loader-1.1.11.tgz#6fe886449b0f2a936e43cabaac0cdbfb369506f8"
   dependencies:
     loader-utils "^1.0.2"
     schema-utils "^0.4.5"
@@ -4263,9 +4277,9 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
 
-fluture@^8.0.0:
+fluture@^8.0.2:
   version "8.0.2"
-  resolved "https://registry.yarnpkg.com/fluture/-/fluture-8.0.2.tgz#015f8b36b994188fb33d3bfa0da327b520a5e047"
+  resolved "http://registry.npmjs.org/fluture/-/fluture-8.0.2.tgz#015f8b36b994188fb33d3bfa0da327b520a5e047"
   dependencies:
     concurrify "^1.0.0"
     denque "^1.1.1"
@@ -4958,7 +4972,7 @@ html-entities@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-1.2.1.tgz#0df29351f0721163515dfb9e5543e5f6eed5162f"
 
-html-loader@^0.5.1:
+html-loader@^0.5.5:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/html-loader/-/html-loader-0.5.5.tgz#6356dbeb0c49756d8ebd5ca327f16ff06ab5faea"
   dependencies:
@@ -4984,9 +4998,9 @@ html-tags@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-2.0.0.tgz#10b30a386085f43cede353cc8fa7cb0deeea668b"
 
-html-webpack-plugin@^3.0.0:
+html-webpack-plugin@^3.2.0:
   version "3.2.0"
-  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-3.2.0.tgz#b01abbd723acaaa7b37b6af4492ebda03d9dd37b"
+  resolved "http://registry.npmjs.org/html-webpack-plugin/-/html-webpack-plugin-3.2.0.tgz#b01abbd723acaaa7b37b6af4492ebda03d9dd37b"
   dependencies:
     html-minifier "^3.2.3"
     loader-utils "^0.2.16"
@@ -4996,7 +5010,7 @@ html-webpack-plugin@^3.0.0:
     toposort "^1.0.0"
     util.promisify "1.0.0"
 
-html-webpack-template@^6.1.0:
+html-webpack-template@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/html-webpack-template/-/html-webpack-template-6.2.0.tgz#3c9f15f616f4500927909d34adfbccb20d37943c"
 
@@ -5161,7 +5175,7 @@ imagemin-mozjpeg@^6.0.0:
     is-jpg "^1.0.0"
     mozjpeg "^4.0.0"
 
-imagemin-pngquant@^5.0.0:
+imagemin-pngquant@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/imagemin-pngquant/-/imagemin-pngquant-5.1.0.tgz#b9eb563d9e6a3876f6248be0061ba1b0ef269c07"
   dependencies:
@@ -5178,7 +5192,7 @@ imagemin-svgo@^6.0.0:
     is-svg "^2.0.0"
     svgo "^1.0.0"
 
-imagemin-webp@^4.0.0:
+imagemin-webp@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/imagemin-webp/-/imagemin-webp-4.1.0.tgz#effd00160d8456b95cbde5fd26c32d64b0318062"
   dependencies:
@@ -5208,11 +5222,11 @@ imagemin@^5.3.1:
     pify "^2.3.0"
     replace-ext "^1.0.0"
 
-immutable-ext@^1.1.2:
+immutable-ext@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/immutable-ext/-/immutable-ext-1.1.5.tgz#3cdf27a067527c85817bf161a0dad1361ed579cb"
 
-immutable@^3.8.1:
+immutable@^3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
 
@@ -5868,7 +5882,7 @@ jest-changed-files@^21.2.0:
   dependencies:
     throat "^4.0.0"
 
-jest-cli@^21.0.2:
+jest-cli@^21.2.1:
   version "21.2.1"
   resolved "https://registry.yarnpkg.com/jest-cli/-/jest-cli-21.2.1.tgz#9c528b6629d651911138d228bdb033c157ec8c00"
   dependencies:
@@ -7228,22 +7242,22 @@ neo-async@^2.5.0:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.1.tgz#acb909e327b1e87ec9ef15f41b8a269512ad41ee"
 
-neutrino@^8.2.3:
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/neutrino/-/neutrino-8.2.3.tgz#359677ae6dd1a3742889e765b41bc9b93dedf30d"
+neutrino@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/neutrino/-/neutrino-8.3.0.tgz#36feaa00448d7ca413193e58d51798c2568f672d"
   dependencies:
     deep-sort-object "^1.0.2"
     deepmerge "^1.5.2"
-    fluture "^8.0.0"
-    immutable "^3.8.1"
-    immutable-ext "^1.1.2"
+    fluture "^8.0.2"
+    immutable "^3.8.2"
+    immutable-ext "^1.1.5"
     javascript-stringify "^1.6.0"
     mitt "^1.1.3"
-    ora "^2.0.0"
+    ora "^2.1.0"
     ramda "^0.25.0"
-    webpack "^3.10.0"
-    webpack-chain "^4.5.0"
-    webpack-dev-server "^2.9.7"
+    webpack "^3.12.0"
+    webpack-chain "^4.8.0"
+    webpack-dev-server "^2.11.2"
     webpack-sources "1.0.1"
     yargs "^11.0.0"
 
@@ -7384,22 +7398,22 @@ nodeify@^1.0.0:
     is-promise "~1.0.0"
     promise "~1.3.0"
 
-nodent-compiler@^3.2.4:
-  version "3.2.6"
-  resolved "https://registry.yarnpkg.com/nodent-compiler/-/nodent-compiler-3.2.6.tgz#ce53314bce7b18f136601068886b0379b8d372a8"
+nodent-compiler@^3.2.10:
+  version "3.2.11"
+  resolved "https://registry.yarnpkg.com/nodent-compiler/-/nodent-compiler-3.2.11.tgz#8f4bc703d7d8d0e563f5e09ea22efdce04dbaf9b"
   dependencies:
-    acorn ">=2.5.2"
+    acorn ">= 2.5.2 <= 5.7.3"
     acorn-es7-plugin "^1.1.7"
-    nodent-transform "^3.2.6"
+    nodent-transform "^3.2.9"
     source-map "^0.5.7"
 
 nodent-runtime@>=3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/nodent-runtime/-/nodent-runtime-3.2.1.tgz#9e2755d85e39f764288f0d4752ebcfe3e541e00e"
 
-nodent-transform@^3.2.6:
-  version "3.2.6"
-  resolved "https://registry.yarnpkg.com/nodent-transform/-/nodent-transform-3.2.6.tgz#b782edc0e2aafa6d29df0333b36cd00af757c36d"
+nodent-transform@^3.2.9:
+  version "3.2.9"
+  resolved "https://registry.yarnpkg.com/nodent-transform/-/nodent-transform-3.2.9.tgz#ec11a6116b5476e60bc212371cf6b8e4c74f40b6"
 
 nomnom@~1.6.2:
   version "1.6.2"
@@ -7657,6 +7671,12 @@ opn@^5.1.0:
   dependencies:
     is-wsl "^1.1.0"
 
+opn@^5.3.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/opn/-/opn-5.4.0.tgz#cb545e7aab78562beb11aa3bfabc7042e1761035"
+  dependencies:
+    is-wsl "^1.1.0"
+
 optimist@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.6.1.tgz#da3ea74686fa21a19a111c326e90eb15a0196686"
@@ -7691,7 +7711,7 @@ ora@^0.2.3:
     cli-spinners "^0.1.2"
     object-assign "^4.0.1"
 
-ora@^2.0.0:
+ora@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/ora/-/ora-2.1.0.tgz#6caf2830eb924941861ec53a173799e008b51e5b"
   dependencies:
@@ -9604,11 +9624,19 @@ schema-utils@^0.3.0:
   dependencies:
     ajv "^5.0.0"
 
-schema-utils@^0.4.0, schema-utils@^0.4.3, schema-utils@^0.4.5:
+schema-utils@^0.4.0, schema-utils@^0.4.5:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-0.4.5.tgz#21836f0608aac17b78f9e3e24daff14a5ca13a3e"
   dependencies:
     ajv "^6.1.0"
+    ajv-keywords "^3.1.0"
+
+schema-utils@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-1.0.0.tgz#0b79a93204d7b600d4b2850d1f66c2a34951c770"
+  dependencies:
+    ajv "^6.1.0"
+    ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
 
 scroll@^2.0.3:
@@ -9865,9 +9893,9 @@ sntp@1.x.x:
   dependencies:
     hoek "2.x.x"
 
-sockjs-client@1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/sockjs-client/-/sockjs-client-1.1.4.tgz#5babe386b775e4cf14e7520911452654016c8b12"
+sockjs-client@1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/sockjs-client/-/sockjs-client-1.1.5.tgz#1bb7c0f7222c40f42adf14f4442cbd1269771a83"
   dependencies:
     debug "^2.6.6"
     eventsource "0.1.6"
@@ -10246,9 +10274,9 @@ strip-outer@^1.0.0:
   dependencies:
     escape-string-regexp "^1.0.2"
 
-style-loader@^0.20.0:
+style-loader@^0.20.3:
   version "0.20.3"
-  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.20.3.tgz#ebef06b89dec491bcb1fdb3452e913a6fd1c10c4"
+  resolved "http://registry.npmjs.org/style-loader/-/style-loader-0.20.3.tgz#ebef06b89dec491bcb1fdb3452e913a6fd1c10c4"
   dependencies:
     loader-utils "^1.1.0"
     schema-utils "^0.4.5"
@@ -10911,13 +10939,13 @@ urix@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
 
-url-loader@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/url-loader/-/url-loader-1.0.1.tgz#61bc53f1f184d7343da2728a1289ef8722ea45ee"
+url-loader@^1.0.1:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/url-loader/-/url-loader-1.1.2.tgz#b971d191b83af693c5e3fea4064be9e1f2d7f8d8"
   dependencies:
     loader-utils "^1.1.0"
     mime "^2.0.3"
-    schema-utils "^0.4.3"
+    schema-utils "^1.0.0"
 
 url-parse-lax@^1.0.0:
   version "1.0.0"
@@ -11261,9 +11289,9 @@ webidl-conversions@^4.0.0:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
 
-webpack-chain@^4.5.0:
-  version "4.8.0"
-  resolved "https://registry.yarnpkg.com/webpack-chain/-/webpack-chain-4.8.0.tgz#06fc3dbb9f2707d4c9e899fc6250fbcf2afe6fd1"
+webpack-chain@^4.8.0:
+  version "4.12.1"
+  resolved "https://registry.yarnpkg.com/webpack-chain/-/webpack-chain-4.12.1.tgz#6c8439bbb2ab550952d60e1ea9319141906c02a6"
   dependencies:
     deepmerge "^1.5.2"
     javascript-stringify "^1.6.0"
@@ -11278,9 +11306,9 @@ webpack-dev-middleware@1.12.2:
     range-parser "^1.0.3"
     time-stamp "^2.0.0"
 
-webpack-dev-server@^2.9.7:
-  version "2.11.2"
-  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.11.2.tgz#1f4f4c78bf1895378f376815910812daf79a216f"
+webpack-dev-server@^2.11.2:
+  version "2.11.3"
+  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.11.3.tgz#3fd48a402164a6569d94d3d17f131432631b4873"
   dependencies:
     ansi-html "0.0.7"
     array-includes "^3.0.3"
@@ -11303,7 +11331,7 @@ webpack-dev-server@^2.9.7:
     selfsigned "^1.9.1"
     serve-index "^1.7.2"
     sockjs "0.3.19"
-    sockjs-client "1.1.4"
+    sockjs-client "1.1.5"
     spdy "^3.4.1"
     strip-ansi "^3.0.0"
     supports-color "^5.1.0"
@@ -11331,7 +11359,7 @@ webpack-sources@^1.0.0, webpack-sources@^1.0.1, webpack-sources@^1.1.0:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@3.12.0, webpack@^3.10.0:
+webpack@3.12.0, webpack@^3.12.0:
   version "3.12.0"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.12.0.tgz#3f9e34360370602fcf639e97939db486f4ec0d74"
   dependencies:
@@ -11438,7 +11466,7 @@ worker-farm@^1.3.1, worker-farm@^1.5.2:
   dependencies:
     errno "~0.1.7"
 
-worker-loader@^1.0.0:
+worker-loader@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/worker-loader/-/worker-loader-1.1.1.tgz#920d74ddac6816fc635392653ed8b4af1929fd92"
   dependencies:
