@@ -4,9 +4,6 @@
   "main": "index.js",
   "author": "Mitch Robb <mrobb@veritone.com>",
   "private": false,
-  "now": {
-    "alias": "veritone-app-boilerplate-react"
-  },
   "scripts": {
     "start": "neutrino start",
     "build": "neutrino build",
