@@ -8,19 +8,15 @@ import {
   take,
   select
 } from 'redux-saga/effects';
-import { find, isEmpty, get } from 'lodash';
+import { isEmpty, get } from 'lodash';
 import { modules } from 'veritone-redux-common';
 const {
   user: {
     selectUser,
     fetchUser,
-    fetchEnabledApps,
     FETCH_USER,
     FETCH_USER_SUCCESS,
     FETCH_USER_FAILURE,
-    FETCH_USER_APPLICATIONS,
-    FETCH_USER_APPLICATIONS_SUCCESS,
-    FETCH_USER_APPLICATIONS_FAILURE,
     LOGOUT_SUCCESS
   },
   auth: { setOAuthToken, OAUTH_GRANT_FLOW_SUCCESS },
@@ -37,33 +33,11 @@ import {
 import { BOOT, bootFinished, boot } from './';
 
 function* getAppStartupDependencies() {
-  // fetch stuff
   yield all([
-    put(fetchEnabledApps())
+    // put.resolve(getStartupResourceOne()),
+    // put.resolve(getStartupResourceTwo())
     // ...other app dependencies
   ]);
-
-  // wait for results
-  const actions = [
-    ...(yield race([
-      take(FETCH_USER_APPLICATIONS_SUCCESS),
-      take([
-        // requestError
-        a => a.type === FETCH_USER_APPLICATIONS && a.error,
-        // api error
-        FETCH_USER_APPLICATIONS_FAILURE
-      ])
-    ]))
-    // ...etc
-  ];
-
-  // fixme -- refactor FETCH_USER/FETCH_USER_APPLICATIONS in redux-common to thunk style
-  // and graphql, then replace this ugly take block and use put.resolve
-
-  const error = find(actions, { error: true });
-  if (error) {
-    console.log('there was an error', error);
-  }
 }
 
 function* watchAppBoot() {
@@ -73,14 +47,17 @@ function* watchAppBoot() {
 
     if (user) {
       // login success with stored credentials or cookie
-      yield* getAppStartupDependencies();
+      try {
+        yield* getAppStartupDependencies();
+      } catch (e) {
+        return yield put(bootFinished({ failed: true }));
+      }
+
       yield put(bootFinished());
     } else {
-      if (config.useOAuthGrant) {
-        yield* redirectAndAwaitOAuthGrant();
-      } else {
-        yield* redirectToVeritoneInternalLogin();
-      }
+      yield* config.useOAuthGrant
+        ? redirectAndAwaitOAuthGrant()
+        : redirectToVeritoneInternalLogin();
     }
   });
 }

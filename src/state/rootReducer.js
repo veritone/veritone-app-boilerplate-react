@@ -19,6 +19,5 @@ export default extraReducers =>
     [enginesExampleNamespace]: enginesExampleReducer,
     [userNamespace]: userReducer,
     [config.namespace]: (state = window.config) => state, // fixme?
-    // [searchNamespace]: searchReducer,
     ...extraReducers
   });

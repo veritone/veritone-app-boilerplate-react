@@ -8,15 +8,18 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { helpers } from 'veritone-redux-common';
+const { fetchingStatus } = helpers;
 
 import {
-  engineCategoriesAreLoading,
+  fetchEngineCategoriesFetchingStatus,
   selectEngineCategories
 } from 'state/modules/engines-example';
 import RouteLoadingScreen from 'components/RouteLoadingScreen';
 
 @connect(state => ({
-  loading: engineCategoriesAreLoading(state),
+  loading:
+    fetchEngineCategoriesFetchingStatus(state) === fetchingStatus.fetching,
   categories: selectEngineCategories(state)
 }))
 export default class CategoriesTab extends React.Component {

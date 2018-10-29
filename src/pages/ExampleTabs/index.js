@@ -5,12 +5,17 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { string, func, objectOf, any, bool } from 'prop-types';
+import { helpers } from 'veritone-redux-common';
+const { fetchingStatus } = helpers;
 
 import {
   selectCurrentRoutePayload,
   ROUTE_EXAMPLE_TABS
 } from 'state/modules/routing';
-import { engineIsLoading, selectEngine } from 'state/modules/engines-example';
+import {
+  fetchEngineFetchingStatus,
+  selectEngine
+} from 'state/modules/engines-example';
 import AppContainer from 'components/AppContainer';
 import AppBar from 'components/AppBar';
 import TopBar from 'components/TopBar';
@@ -28,10 +33,11 @@ import styles from './styles.scss';
       state,
       '18502331-1a02-4261-8350-9f36bbabf9cf'
     ),
-    engineExampleDataLoading: engineIsLoading(
-      state,
-      '18502331-1a02-4261-8350-9f36bbabf9cf'
-    )
+    engineExampleDataLoading:
+      fetchEngineFetchingStatus(
+        state,
+        '18502331-1a02-4261-8350-9f36bbabf9cf'
+      ) === fetchingStatus.fetching
   }),
   {
     navigateToTab: tabName => ({

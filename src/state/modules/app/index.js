@@ -6,18 +6,21 @@ export const BOOT_FINISHED = 'boot saga finished';
 
 const defaultState = {
   isBooting: false,
-  bootDidFinish: false
+  bootDidFinish: false,
+  bootDidFail: false
 };
 const reducer = createReducer(defaultState, {
   [BOOT]: state => ({
     ...state,
     isBooting: true,
-    bootDidFinish: false
+    bootDidFinish: false,
+    bootDidFail: false
   }),
-  [BOOT_FINISHED]: state => ({
+  [BOOT_FINISHED]: (state, action) => ({
     ...state,
     isBooting: false,
-    bootDidFinish: true
+    bootDidFinish: true,
+    bootDidFail: !!action.payload.failed
   })
 });
 
@@ -29,9 +32,11 @@ export const boot = (options = {}) => ({
   payload: options
 });
 
-export const bootFinished = () => ({
-  type: BOOT_FINISHED
+export const bootFinished = ({ failed = false } = {}) => ({
+  type: BOOT_FINISHED,
+  payload: { failed }
 });
 
 export const isBooting = state => state.app.isBooting;
 export const bootDidFinish = state => state.app.bootDidFinish;
+export const bootDidFail = state => state.app.bootDidFail;

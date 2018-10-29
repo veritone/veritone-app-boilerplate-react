@@ -1,7 +1,11 @@
 import { helpers } from 'veritone-redux-common';
-const { createReducer, callGraphQLApi } = helpers;
-import { without, union } from 'lodash';
-import { set } from 'lodash/fp';
+const {
+  createReducer,
+  callGraphQLApi,
+  handleApiCall,
+  reduceReducers,
+  fetchingStatus
+} = helpers;
 
 export const FETCH_ENGINE = 'request to fetch an engine';
 export const FETCH_ENGINE_SUCCESS = 'engine fetched successfully';
@@ -12,62 +16,68 @@ export const FETCH_ENGINE_CATEGORIES_SUCCESS =
   'engine categories fetched successfully';
 export const FETCH_ENGINE_CATEGORIES_FAILURE = 'engine categories fetch failed';
 
-// fixme -- use some generic reducer to handle all this boilerplate,
+export const namespace = 'engines-example';
+export const local = state => state[namespace];
+
+const {
+  reducer: fetchEngineReducer,
+  selectors: {
+    fetchingStatus: fetchEngineFetchingStatus,
+    fetchingFailureMessage: fetchEngineFailureMessage
+  }
+} = handleApiCall({
+  types: [FETCH_ENGINE, FETCH_ENGINE_SUCCESS, FETCH_ENGINE_FAILURE],
+  stateSelector: local
+});
+
+export { fetchEngineFetchingStatus, fetchEngineFailureMessage };
+export const selectEngine = (state, id) => local(state).enginesById[id];
+
+const {
+  reducer: fetchEngineCategoriesReducer,
+  selectors: {
+    fetchingStatus: fetchEngineCategoriesFetchingStatus,
+    fetchingFailureMessage: fetchEngineCategoriesFailureMessage
+  }
+} = handleApiCall({
+  types: [
+    FETCH_ENGINE_CATEGORIES,
+    FETCH_ENGINE_CATEGORIES_SUCCESS,
+    FETCH_ENGINE_CATEGORIES_FAILURE
+  ],
+  stateSelector: local
+});
+
+export {
+  fetchEngineCategoriesFetchingStatus,
+  fetchEngineCategoriesFailureMessage
+};
+export const selectEngineCategories = state => local(state).engineCategories;
 
 const defaultState = {
-  fetchingEngines: [],
-  failedFetchingEngines: [],
   enginesById: {},
-  fetchingEngineCategories: false,
-  failedFetchingEngineCategories: false,
   engineCategories: []
 };
 
-const reducer = createReducer(defaultState, {
-  [FETCH_ENGINE]: (state, action) => ({
-    ...state,
-    fetchingEngines: union(state.fetchingEngines, [action.meta.variables.id]),
-    failedFetchingEngines: without(
-      state.fetchingEngines,
-      action.meta.variables.id
-    )
-  }),
-  [FETCH_ENGINE_SUCCESS]: (state, action) => ({
-    ...set(
-      `enginesById.${action.meta.variables.id}`,
-      action.payload.engine,
-      state
-    ),
-    fetchingEngines: without(state.fetchingEngines, action.meta.variables.id)
-  }),
-  [FETCH_ENGINE_FAILURE]: (state, action) => ({
-    ...state,
-    fetchingEngines: without(state.fetchingEngines, action.meta.variables.id),
-    failedFetchingEngines: union(state.fetchingEngines, [
-      action.meta.variables.id
-    ])
-  }),
-  [FETCH_ENGINE_CATEGORIES]: (state, action) => ({
-    ...state,
-    fetchingEngineCategories: true,
-    failedFetchingEngineCategories: false
-  }),
-  [FETCH_ENGINE_CATEGORIES_SUCCESS]: (state, action) => ({
-    ...state,
-    engineCategories: action.payload.engineCategories.records,
-    fetchingEngineCategories: false,
-    failedFetchingEngineCategories: false
-  }),
-  [FETCH_ENGINE_CATEGORIES_FAILURE]: state => ({
-    ...state,
-    fetchingEngineCategories: false,
-    failedFetchingEngineCategories: true
+const reducer = reduceReducers(
+  fetchEngineReducer,
+  fetchEngineCategoriesReducer,
+  createReducer(defaultState, {
+    [FETCH_ENGINE_SUCCESS]: (state, action) => ({
+      ...state,
+      enginesById: {
+        ...state.enginesById,
+        [action.meta.variables.id]: action.payload.engine
+      }
+    }),
+    [FETCH_ENGINE_CATEGORIES_SUCCESS]: (state, action) => ({
+      ...state,
+      engineCategories: action.payload.engineCategories.records
+    })
   })
-});
+);
 
 export default reducer;
-export const namespace = 'engines-example';
-export const local = state => state[namespace];
 
 export const fetchEngine = id => async (dispatch, getState) => {
   const query = `
@@ -85,7 +95,8 @@ export const fetchEngine = id => async (dispatch, getState) => {
     variables: { id },
     bailout: state => !!selectEngine(state, id),
     dispatch,
-    getState
+    getState,
+    requestId: id
   });
 };
 
@@ -118,18 +129,7 @@ export const fetchEngineCategories = ({ type } = {}) => async (
     variables: { type },
     dispatch,
     getState,
-    bailout: state => engineCategoriesAreLoading(state)
+    bailout: state =>
+      fetchEngineCategoriesFetchingStatus(state) === fetchingStatus.fetching
   });
 };
-
-export const selectEngine = (state, id) => local(state).enginesById[id];
-export const engineIsLoading = (state, id) =>
-  local(state).fetchingEngines.includes(id);
-export const engineFailedToFetch = (state, id) =>
-  local(state).failedFetchingEngines.includes(id);
-
-export const selectEngineCategories = state => local(state).engineCategories;
-export const engineCategoriesAreLoading = state =>
-  local(state).fetchingEngineCategories;
-export const engineCategoriesFailedToFetch = state =>
-  local(state).failedFetchingEngineCategories;
