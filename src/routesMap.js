@@ -43,7 +43,11 @@ export default {
           payload: { tab: 'categories' }
         }
       }
-    ]
+    ],
+    returnTo: {
+      label: 'Home',
+      route: { type: ROUTE_HOME }
+    }
   },
   [NOT_FOUND]: {
     path: '/not-found',
