@@ -39,7 +39,14 @@ export default class Home extends React.Component {
       <Fragment>
         <SideBar />
         <AppBar />
-        <TopBar />
+        <TopBar
+          // eslint-disable-next-line
+          renderActionButton={() => (
+            <Button color="primary" variant="raised">
+              test
+            </Button>
+          )}
+        />
         <AppContainer appBarOffset topBarOffset sideBarOffset>
           <ContentContainer>
             <Grid container>

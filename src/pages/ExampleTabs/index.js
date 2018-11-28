@@ -4,12 +4,10 @@ import Grid from '@material-ui/core/Grid';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { string, func, objectOf, any, bool, shape } from 'prop-types';
+import { string, func, objectOf, any, bool } from 'prop-types';
 
 import {
   selectCurrentRoutePayload,
-  selectCurrentRouteReturnTo,
-  navigateCurrentRouteReturnTo,
   ROUTE_EXAMPLE_TABS
 } from 'state/modules/routing';
 import { engineIsLoading, selectEngine } from 'state/modules/engines-example';
@@ -26,7 +24,6 @@ import styles from './styles.scss';
 @connect(
   state => ({
     currentTab: selectCurrentRoutePayload(state).tab,
-    currentRouteReturnTo: selectCurrentRouteReturnTo(state),
     engineExampleData: selectEngine(
       state,
       '18502331-1a02-4261-8350-9f36bbabf9cf'
@@ -40,25 +37,15 @@ import styles from './styles.scss';
     navigateToTab: tabName => ({
       type: ROUTE_EXAMPLE_TABS,
       payload: { tab: tabName }
-    }),
-    navigateBack: navigateCurrentRouteReturnTo
+    })
   }
 )
 export default class ExampleTabs extends React.Component {
   static propTypes = {
     currentTab: string.isRequired,
     navigateToTab: func.isRequired,
-    navigateBack: func.isRequired,
     engineExampleData: objectOf(any),
-    engineExampleDataLoading: bool,
-    currentRouteReturnTo: shape({
-      label: string.isRequired,
-      route: objectOf(any)
-    })
-  };
-
-  static defaultProps = {
-    currentRouteReturnTo: {}
+    engineExampleDataLoading: bool
   };
 
   handleChangeTab = (e, tabName) => {
@@ -79,11 +66,7 @@ export default class ExampleTabs extends React.Component {
       <Fragment>
         <SideBar />
         <AppBar />
-        <TopBar
-          backButton={!!this.props.currentRouteReturnTo.route}
-          onClickBackButton={this.props.navigateBack}
-          leftText={this.props.currentRouteReturnTo.label}
-        />
+        <TopBar />
         <AppContainer appBarOffset topBarOffset sideBarOffset>
           <ContentContainer>
             <Grid container>
