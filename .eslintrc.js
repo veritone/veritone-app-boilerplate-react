@@ -10,5 +10,10 @@ module.exports = {
     ...devEnv.eslintReact.globals,
     module: true,
     process: true
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
   }
 };

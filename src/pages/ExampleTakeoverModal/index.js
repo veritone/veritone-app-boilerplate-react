@@ -69,7 +69,7 @@ export default class ExampleTakeoverModal extends React.Component {
             }}
           >
             <Typography
-              variant="subheading"
+              variant="subtitle1"
               color="inherit"
               className={styles.title}
             >
