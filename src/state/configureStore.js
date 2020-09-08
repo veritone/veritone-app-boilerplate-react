@@ -55,9 +55,10 @@ if (isDev) {
 const composeMiddlewares = applyMiddleware(...middlewares);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export default function configureStore() {
+export default function configureStore(preloadedState) {
   const store = createStore(
     composeReducers({ location: routerReducer }),
+    preloadedState,
     composeEnhancers(routerEnhancer, composeMiddlewares)
   );
 
