@@ -99,7 +99,7 @@
     "redux-saga": "^0.16.0",
     "redux-saga-router": "^2.2.0",
     "redux-thunk": "^2.2.0",
-    "serve": "^9.1.0",
+    "serve": "^10.1.2",
     "veritone-react-common": "^6.0.0",
     "veritone-redux-common": "^3.7.0",
     "veritone-widgets": "^6.0.0"
