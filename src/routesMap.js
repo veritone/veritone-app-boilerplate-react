@@ -1,26 +1,40 @@
 import { NOT_FOUND } from 'redux-first-router';
 import {
-  ROUTE_AUTH,
   ROUTE_HOME,
   ROUTE_FORBIDDEN,
   ROUTE_EXAMPLE_TAKEOVER,
-  ROUTE_EXAMPLE_TABS
+  ROUTE_EXAMPLE_TABS,
+  ROUTE_RESULTS,
+  ROUTE_DETAILS
 } from 'modules/routing';
 
-import { loadAuthPage } from 'modules/auth/saga';
+// import { loadAuthPage } from 'modules/auth/saga';
 import { loadExampleTabsPage } from 'modules/exampleTabs/saga';
-
+import { loadResultsSaga } from 'modules/results/saga';
+import loadResultSaga from 'modules/result/saga';
 export default {
-  [ROUTE_AUTH]: {
-    path: '/login',
-    component: 'Auth',
-    saga: loadAuthPage,
-    requiresAuth: false
-  },
+  // [ROUTE_AUTH]: {
+  //   path: '/login',
+  //   component: 'Auth',
+  //   saga: loadAuthPage,
+  //   requiresAuth: false
+  // },
   [ROUTE_HOME]: {
     path: '/',
     component: 'Home',
     requiresAuth: true
+  },
+  [ROUTE_RESULTS]: {
+    path: '/results',
+    component: 'Results',
+    saga: loadResultsSaga,
+    requiresAuth: false
+  },
+  [ROUTE_DETAILS]: {
+    path: '/details/:id',
+    component: 'DetailsPage',
+    saga: loadResultSaga,
+    requiresAuth: false
   },
   [ROUTE_EXAMPLE_TAKEOVER]: {
     path: '/example-takeover',

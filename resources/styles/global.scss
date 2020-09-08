@@ -4,6 +4,13 @@
 @import url('https://static.veritone.com/veritone-ui/veritone-icons-10/style.css');
 @import url(https://static.veritone.com/engines/assets/v001/style.css);
 
+@font-face {
+  font-family: 'Dosis';
+  src: url('../fonts/Dosis-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body {
   height: 100%;
@@ -112,5 +119,6 @@ hr {
 :global {
   #root {
     height: 100%;
+    font-family: 'Dosis';
   }
 }

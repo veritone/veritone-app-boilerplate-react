@@ -1,5 +1,4 @@
 import React from 'react';
-import { hot } from 'react-hot-loader';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import RootRoute from '../../RootRoute';
@@ -15,4 +14,4 @@ const App = () => (
   </div>
 );
 
-export default hot(module)(App);
+export default App;

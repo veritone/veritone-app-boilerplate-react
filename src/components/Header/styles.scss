@@ -1,0 +1,44 @@
+// @import '../../../resources/styles/global.scss';
+
+.header {
+  background-color: #0f2f51;
+  display: flex;
+  padding: 17px 0;
+
+  .header-content {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    min-width: 1100px;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      // margin-right: 80px;
+    }
+
+    .links {
+      display: flex;
+      margin: auto;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      color: #f8fbfe;
+
+      .profile {
+        margin-left: 20px;
+      }
+    }
+
+    .wrapper-searchbar {
+      margin: 5px 100px 0 74px;
+    }
+
+    .user-box {
+      // @include custom-btn();
+      border: 1px solid white;
+      color: white;
+      padding: 6px 20px;
+    }
+  }
+}

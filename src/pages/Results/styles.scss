@@ -1,0 +1,22 @@
+.results-page {
+  font-family: 'Dosis';
+
+  .content {
+    display: flex;
+    margin: auto;
+    max-width: 1100px;
+
+    .wrapper-results {
+      max-height: 860px;
+      overflow: hidden;
+
+      .title {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 30px;
+        color: #002252;
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
