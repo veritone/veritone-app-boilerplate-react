@@ -1,8 +1,15 @@
+const merge = require('babel-merge');
 const path = require('path');
+const fs = require('fs');
 const { pick, without, find } = require('lodash');
 const UglifyjsPlugin = require('uglifyjs-webpack-plugin');
 
-const appConfig = require('./config.json');
+const processEnv = process.env.environment;
+const deployedConfigPath = `./config-${process.env.environment}.json`;
+const localConfigPath = './config.json';
+const isDeployed = processEnv && fs.existsSync(deployedConfigPath);
+
+const appConfig = require(isDeployed ? deployedConfigPath : localConfigPath);
 const safeConfigKeys = require('./configWhitelist.json');
 
 const extraBabelPlugins = [
@@ -21,12 +28,11 @@ module.exports = {
     [
       '@neutrinojs/react',
       {
+        minify: {
+          babel: false
+        },
         html: {
           title: 'Veritone App Boilerplate',
-          // config.json can be baked into the app for static deployments.
-          // Otherwise just add a stub at window.config where something else can
-          // inject config at runtime.
-          window: { config: appConfig.useHardcodedConfig ? safeConfig : {} },
           links: [
             {
               href:
@@ -58,8 +64,13 @@ module.exports = {
               href: 'https://static.veritone.com/assets/favicon/favicon.ico',
               rel: 'shortcut icon',
               type: 'image/x-icon'
+            },
+            {
+              href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
+              rel: 'stylesheet'
             }
-          ]
+          ],
+          window: { config: safeConfig }
         },
         devServer: {
           public: appConfig.useOAuthGrant ? 'localhost' : 'local.veritone.com',
@@ -80,8 +91,8 @@ module.exports = {
               useId: 'sass',
               options: {
                 includePaths: [
-                  path.resolve('./src'),
-                  path.resolve('./resources')
+                  path.resolve(__dirname, './src'),
+                  path.resolve(__dirname, './resources')
                 ]
               }
             }
