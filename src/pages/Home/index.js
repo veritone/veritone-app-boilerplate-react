@@ -42,7 +42,7 @@ export default class Home extends React.Component {
         <TopBar
           // eslint-disable-next-line
           renderActionButton={() => (
-            <Button color="primary" variant="raised">
+            <Button color="primary" variant="contained">
               test
             </Button>
           )}

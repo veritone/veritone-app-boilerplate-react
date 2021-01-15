@@ -14,10 +14,10 @@ export default class NotFound extends React.Component {
       <AppContainer>
         <div className={styles.container}>
           <img src={errorLoading} className={styles.bigImage} />
-          <Typography variant="headline" className={styles.headline}>
+          <Typography variant="h5" className={styles.headline}>
             Page Not Found
           </Typography>
-          <Typography variant="subheading" color="textSecondary">
+          <Typography variant="subtitle1" color="textSecondary">
             {
               "The page you are looking for has been moved, deleted or doesn't exist."
             }
@@ -25,7 +25,7 @@ export default class NotFound extends React.Component {
           <Link to={{ type: ROUTE_HOME }}>
             <Button
               className={styles.actionButton}
-              variant="raised"
+              variant="contained"
               color="primary"
             >
               Home

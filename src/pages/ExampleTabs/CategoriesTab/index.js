@@ -29,7 +29,7 @@ export default class CategoriesTab extends React.Component {
   render() {
     return (
       <div>
-        <Typography variant="display1" gutterBottom>
+        <Typography variant="h4" gutterBottom>
           Engine Categories:
         </Typography>
         <Typography variant="body1" gutterBottom>

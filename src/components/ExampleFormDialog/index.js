@@ -32,6 +32,7 @@ export default class ExampleFormDialog extends React.Component {
         disableBackdropClick
         disableEscapeKeyDown
         maxWidth="md"
+        disableEnforceFocus
       >
         <form onSubmit={this.props.handleSubmit}>
           <DialogTitle>Create New Item</DialogTitle>
