@@ -22,7 +22,7 @@ module.exports = {
       '@neutrinojs/react',
       {
         html: {
-          title: 'Veritone App Boilerplate',
+          title: 'Veritone | Marketplace',
           // config.json can be baked into the app for static deployments.
           // Otherwise just add a stub at window.config where something else can
           // inject config at runtime.
@@ -64,7 +64,7 @@ module.exports = {
         devServer: {
           public: appConfig.useOAuthGrant ? 'localhost' : 'local.veritone.com',
           // open: true, // open browser window when server starts
-          port: 3001,
+          port: 3000,
           publicPath: '/'
         },
         minify: {

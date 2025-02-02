@@ -2,8 +2,9 @@ import React from 'react';
 // import {} from 'lodash';
 import { appBarHeight, topBarHeight } from 'veritone-react-common';
 import styles from './styles.scss';
-// import { PropTypes } from 'helpers/react';
-// const {} = PropTypes;
+import Solutions from './components/solutions';
+import Tags from './components/tags';
+import Industry from './components/industry';
 
 export default class SideBar extends React.Component {
   static propTypes = {};
@@ -17,7 +18,9 @@ export default class SideBar extends React.Component {
           top: appBarHeight + topBarHeight
         }}
       >
-        sidebar content
+        <Solutions />
+        <Tags />
+        <Industry />
       </aside>
     );
   }

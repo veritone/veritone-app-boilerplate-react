@@ -1,0 +1,50 @@
+.card {
+  border: 1px solid rgba(154, 170, 190, 0.2);
+  border-radius: 2px;
+  padding: 16px;
+  margin-bottom: 24px;
+  display: flex;
+
+  .image {
+    margin-right: 20px;
+
+    img {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+    }
+  }
+
+  .wrapper-details {
+    .title {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 32px;
+      color: #002252;
+      margin-bottom: 4px;
+    }
+
+    .category {
+      font-size: 12px;
+      line-height: 15px;
+      color: #2544c1;
+      mix-blend-mode: normal;
+      opacity: 0.8;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      font-size: 14px;
+      line-height: 18px;
+      color: #727272;
+    }
+  }
+
+  &:hover {
+    border: 1px solid rgba(154, 170, 190, 0.2);
+
+    .title {
+      color: #254bc1;
+    }
+  }
+}

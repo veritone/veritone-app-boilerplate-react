@@ -6,7 +6,7 @@ import {
   navigateCurrentRouteReturnTo,
   selectCurrentRouteReturnTo
 } from 'state/modules/routing';
-import { any, func, objectOf, shape, string } from 'prop-types';
+import { func, shape, string } from 'prop-types';
 
 @connect(
   state => ({
@@ -21,7 +21,7 @@ class TopBar extends Component {
     navigateBack: func.isRequired,
     currentRouteReturnTo: shape({
       label: string.isRequired,
-      route: objectOf(any)
+      route: shape
     })
   };
 

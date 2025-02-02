@@ -9,7 +9,28 @@ $sidebarwidth: 220;
 .container {
   width: #{$sidebarwidth}px;
   height: 100%;
-  position: fixed;
-  left: 0;
+  // position: fixed;
+  // left: 0;
   background: white;
+}
+
+.solutions,
+.tags,
+.industry {
+  margin-bottom: 50px;
+
+  .title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 32px;
+    color: #002252;
+    margin-bottom: 16px;
+  }
+
+  .item {
+    font-size: 14px;
+    line-height: 18px;
+    color: #727272;
+    margin-bottom: 20px;
+  }
 }
